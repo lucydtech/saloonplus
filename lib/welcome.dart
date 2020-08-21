@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:saloonplus/screens/components/bottom_nav.dart';
 import 'ThemeData/fontstyle.dart';
 
 class Welcome extends StatefulWidget {
@@ -12,8 +13,11 @@ class Welcome extends StatefulWidget {
 class _WelcomeState extends State<Welcome> {
   @override
   void initState() {
-    Timer(Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacementNamed("/login_signup");
+    Timer(Duration(milliseconds: 200), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => BottomNav(currentindex: 2,)),
+      );
     });
     super.initState();
   }

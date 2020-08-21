@@ -227,7 +227,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
             Spacer(flex: 2,),
             TextFormField(
               validator: (val){
-                return val.length > 6 ? ((signUpPasswordController.text == val) ? null : "Password and Confirm Password Mismatch") : "Confirm Password too short";
+                return val.length > 6 ? ((signUpPasswordController.text == val) ? null : "Password and Confirm Password do not match") : "Confirm Password too short";
               },
               controller: signUpCnfPasswordController,
               maxLength: 25,
@@ -304,7 +304,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
         onTap: (){
           if(btnTitle == "LOG IN") {
             if(loginFormKey.currentState.validate()) {
-
+              Navigator.pushNamed(context, "/bottom_nav");
             }
           }
           else {
