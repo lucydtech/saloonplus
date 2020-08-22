@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Saloon+',
       theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: Font_Style.primaryColor,
           primaryColor: Font_Style.primaryColor,
-          cursorColor: Font_Style.primaryColor),
+          cursorColor: Font_Style.secondaryColor),
       routes: {
         '/': (context) => Welcome(),
         '/login_signup': (context) => LoginSignUp(),
