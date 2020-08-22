@@ -194,7 +194,7 @@ class _SearchHomeState extends State<SearchHome> {
                                         color: Color.fromRGBO(2, 43, 60, 1),
                                       ),
                                     ),
-                                    physics: ClampingScrollPhysics(),
+                                    physics: ScrollPhysics(),
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     itemCount: 10,
@@ -213,17 +213,43 @@ class _SearchHomeState extends State<SearchHome> {
                   _showSearchList ? Container(
                     padding: EdgeInsets.only(left: 7.0.w, right: 7.0.w,),
                     child: Container(
+                      padding: EdgeInsets.only(left: 10.0.w, right: 10.0.w, top: 5.0.h, bottom: 10.0.h),
                       height: 300.0.h,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0)),
+                        color: Color.fromRGBO(3, 72, 99, 1),
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
                         boxShadow: [
                           BoxShadow(
                             color: Color.fromRGBO(2, 43, 60, 1),
                             offset: Offset(0.0, 1.0), //(x,y)
                             blurRadius: 6.0,
                           ),
+                        ],
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Spacer(),
+                      InkWell(
+                        onTap: (){
+                          FocusScope.of(context).requestFocus(new FocusNode());
+                          setState(() {
+                            _showSearchList = false;
+                          });
+                        },
+                        child: Container(
+                          width: 70.w,
+                          height: 30.h,
+                          decoration: BoxDecoration(
+                              color: Font_Style.secondaryColor, borderRadius: BorderRadius.circular(5)),
+                          child: Center(
+                            child: Text(
+                                "Search",
+                                style: Font_Style().montserrat_Bold(Color.fromRGBO(3, 72, 99, 1), 16)
+                            ),
+                          ),
+                        ),
+                      ),
                         ],
                       ),
                     ),
