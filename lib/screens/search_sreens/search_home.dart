@@ -27,7 +27,6 @@ class _SearchHomeState extends State<SearchHome> {
         });
       },
       child: Container(
-        color: Font_Style.primaryColor,
         child: Column(
           children: <Widget>[
             Container(
@@ -64,7 +63,7 @@ class _SearchHomeState extends State<SearchHome> {
                       cursorColor: Font_Style.secondaryColor,
                       style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 16),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: -2.3.h),
+                        contentPadding: EdgeInsets.symmetric(vertical: -2.1.h),
                         prefixIcon: Icon(
                           Icons.search,
                           color: Font_Style.secondaryColor,
@@ -264,7 +263,7 @@ class _SearchHomeState extends State<SearchHome> {
   }
 
   Widget _searchHomeListItem() {
-    return  Container(
+    return Container(
       padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 12.0.w),
       height: 90.0.h,
       child: Row(

@@ -16,7 +16,7 @@ class _WelcomeState extends State<Welcome> {
     Timer(Duration(milliseconds: 200), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => BottomNav(currentindex: 2,)),
+        MaterialPageRoute(builder: (context) => BottomNav(currentindex: 1,)),
       );
     });
     super.initState();
