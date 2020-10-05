@@ -105,7 +105,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         ],
       ),
       margin: EdgeInsets.symmetric(
-        vertical: 12.0.h,
+        vertical: 8.0.h,
       ),
       height: 210.0.h,
       child: Column(

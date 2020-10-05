@@ -9,6 +9,8 @@ class BookingHome extends StatefulWidget {
   _BookingHomeState createState() => _BookingHomeState();
 }
 
+//sent, approved, rejected, cancelled, delivered
+
 class _BookingHomeState extends State<BookingHome> with SingleTickerProviderStateMixin{
 
   TabController _bookingTabController;
