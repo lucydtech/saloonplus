@@ -4,9 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:saloonplus/screens/components/bottom_nav.dart';
 import 'package:saloonplus/screens/components/main_drawer.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 class Home extends StatefulWidget {
@@ -72,26 +70,22 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       endDrawer: MainDrawer(),
       body: Container(
           padding: EdgeInsets.only(
-            left: 10.0.w,
-            right: 10.0.w,
+            left: 12.0.w,
+            right: 12.0.w,
           ),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           color: Color.fromRGBO(2, 43, 60, 1),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: Column(
-              children: <Widget>[
-                ListView.builder(
-                  physics: ScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 10,
-                  itemBuilder: (context, i) {
-                    return _homeListItem();
-                  },
-                ),
-              ],
+            child: ListView.builder(
+              physics: ScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: 10,
+              itemBuilder: (context, i) {
+                return _homeListItem();
+              },
             ),
           )),
     );

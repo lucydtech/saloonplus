@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
+import 'package:saloonplus/screens/booking_screens/booking_home.dart';
 import 'package:saloonplus/screens/home_screens/home.dart';
 import 'package:saloonplus/screens/search_sreens/search_home.dart';
 
@@ -26,9 +27,9 @@ class _BottomNavState extends State<BottomNav> {
       });
     }
     _list = [
-      Container(),
-      Home(),
       SearchHome(),
+      Home(),
+      BookingHome(),
     ];
     super.initState();
   }
@@ -60,10 +61,10 @@ class _BottomNavState extends State<BottomNav> {
               child: BottomNavigationBar(
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    title: Center(child: Text("Bookings")),
+                    title: Center(child: Text("Search")),
                     icon: Padding(
                         padding: EdgeInsets.only(top: 5.0.h, bottom: 5.0.h),
-                        child: Icon(Icons.collections_bookmark)),
+                        child: Icon(Icons.search)),
                   ),
                   BottomNavigationBarItem(
                     title: Center(child: Text("Home")),
@@ -72,10 +73,10 @@ class _BottomNavState extends State<BottomNav> {
                         child: Icon(FontAwesomeIcons.home)),
                   ),
                   BottomNavigationBarItem(
-                    title: Center(child: Text("Search")),
+                    title: Center(child: Text("Bookings")),
                     icon: Padding(
                         padding: EdgeInsets.only(top: 5.0.h, bottom: 5.0.h),
-                        child: Icon(Icons.search)),
+                        child: Icon(Icons.collections_bookmark)),
                   ),
                 ],
                 iconSize: 25.0.h,
