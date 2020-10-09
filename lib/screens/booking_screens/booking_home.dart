@@ -51,6 +51,8 @@ class _BookingHomeState extends State<BookingHome> with SingleTickerProviderStat
                       _bookingTabController.index = x;
                     },
                     labelPadding: EdgeInsets.only(bottom: 10.5.h, left: 0, right: 0),
+                    unselectedLabelColor: Font_Style.secondaryColor.withOpacity(0.7),
+                    labelColor: Font_Style.secondaryColor,
                     labelStyle: Font_Style().montserrat_Bold(Font_Style.secondaryColor, 22),
                     unselectedLabelStyle: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 22),
                     tabs: <Widget>[

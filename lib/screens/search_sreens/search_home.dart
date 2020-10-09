@@ -183,25 +183,21 @@ class _SearchHomeState extends State<SearchHome> {
                             ),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.vertical,
-                              child: Column(
-                                children: <Widget>[
-                                  ListView.separated(
-                                    separatorBuilder: (context, index) => Padding(
-                                      padding: EdgeInsets.only(top: 2.0.h),
-                                      child: Divider(
-                                        thickness: 1.0.h,
-                                        color: Color.fromRGBO(2, 43, 60, 1),
-                                      ),
-                                    ),
-                                    physics: ScrollPhysics(),
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: 10,
-                                    itemBuilder: (context, i) {
-                                      return _searchHomeListItem();
-                                    },
+                              child: ListView.separated(
+                                separatorBuilder: (context, index) => Padding(
+                                  padding: EdgeInsets.only(top: 2.0.h),
+                                  child: Divider(
+                                    thickness: 1.0.h,
+                                    color: Color.fromRGBO(2, 43, 60, 1),
                                   ),
-                                ],
+                                ),
+                                physics: ScrollPhysics(),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: 10,
+                                itemBuilder: (context, i) {
+                                  return _searchHomeListItem();
+                                },
                               ),
                             ),
                           ),
@@ -263,99 +259,104 @@ class _SearchHomeState extends State<SearchHome> {
   }
 
   Widget _searchHomeListItem() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 12.0.w),
-      height: 90.0.h,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-              width: 70.0,
-              height: 70.0,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage("assets/images/barber_shop.png")
-                  )
-              )
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width - 130.0.w,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "Beardo Barber Shop",
-                  textAlign: TextAlign.left,
-                  overflow: TextOverflow.clip,
-                  style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),),
-                Text(
-                  "Bhavana colony, Center point, Bowenpally, 1-28-44/A, Plot no 103, Secunderabad, Telangana 500011",
-                  maxLines: 2,
-                  textAlign: TextAlign.left,
-                  overflow: TextOverflow.ellipsis,
-                  style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 12),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text("4.2", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),),
-                    RatingBar(
-                      initialRating: 4.2,
-                      minRating: 1,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: 5,
-                      itemSize: 14.0,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        size: 1.0,
-                        color: Colors.amber,
-                      ),
-                      onRatingUpdate: (rating) {
-                        print(rating);
-                      },
-                    ),
-                    Text("(15)", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),),
-                    Spacer(),
-                    Card(
-                      elevation: 3.0,
-                      color: Font_Style.secondaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(2.0),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
-                        height: 12.0.h,
-                        width: 12.0.w,
-                        child: Center(child: Text("M", style: Font_Style().montserrat_Bold(Color.fromRGBO(3, 72, 99, 1), 10),)),
-                      ),
-                    ),
-                    Card(
-                      elevation: 3.0,
-                      color: Font_Style.secondaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(2.0),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
-                        height: 12.0.h,
-                        width: 12.0.w,
-                        child: Center(child: Text("F", style: Font_Style().montserrat_Bold(Color.fromRGBO(3, 72, 99, 1), 10),)),
-                      ),
-                    ),
-                    Spacer(),
-                    Icon(Icons.directions, size: 16.0.h, color: Font_Style.secondaryColor,),
-                    Text("5.0 KM", style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 14),),
-                  ],
-                ),
-              ],
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, "/barber_profile");
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 12.0.w),
+        height: 90.0.h,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+                width: 70.0.w,
+                height: 70.0.h,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("assets/images/barber_shop.png")
+                    )
+                )
             ),
-          ),
-        ],
+            Container(
+              width: MediaQuery.of(context).size.width - 130.0.w,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Beardo Barber Shop",
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.clip,
+                    style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),),
+                  Text(
+                    "Bhavana colony, Center point, Bowenpally, 1-28-44/A, Plot no 103, Secunderabad, Telangana 500011",
+                    maxLines: 2,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 12),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text("4.2", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),),
+                      RatingBar(
+                        initialRating: 4.2,
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemSize: 14.0,
+                        itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          size: 1.0,
+                          color: Colors.amber,
+                        ),
+                        onRatingUpdate: (rating) {
+                          print(rating);
+                        },
+                      ),
+                      Text("(15)", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),),
+                      Spacer(),
+                      Card(
+                        elevation: 3.0,
+                        color: Font_Style.secondaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
+                          height: 12.0.h,
+                          width: 12.0.w,
+                          child: Center(child: Text("M", style: Font_Style().montserrat_Bold(Color.fromRGBO(3, 72, 99, 1), 10),)),
+                        ),
+                      ),
+                      Card(
+                        elevation: 3.0,
+                        color: Font_Style.secondaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
+                          height: 12.0.h,
+                          width: 12.0.w,
+                          child: Center(child: Text("F", style: Font_Style().montserrat_Bold(Color.fromRGBO(3, 72, 99, 1), 10),)),
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(Icons.directions, size: 16.0.h, color: Font_Style.secondaryColor,),
+                      Text("5.0 KM", style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 14),),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

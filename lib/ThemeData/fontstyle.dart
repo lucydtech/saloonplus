@@ -6,6 +6,7 @@ class Font_Style {
   static Color primaryColor=Color.fromRGBO(1,22,30, 1);
   static Color secondaryColor=Color.fromRGBO(199,232,243, 1);
   static Color secondaryColorWithOpacity = secondaryColor.withOpacity(0.5);
+  static Color middleColor = Color.fromRGBO(3, 72, 99, 1);
 
 //to set the label for input text field
   InputDecoration setLable(var lable,var sufix,BuildContext context){
