@@ -184,12 +184,9 @@ class _SearchHomeState extends State<SearchHome> {
                             child: SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: ListView.separated(
-                                separatorBuilder: (context, index) => Padding(
-                                  padding: EdgeInsets.only(top: 2.0.h),
-                                  child: Divider(
-                                    thickness: 1.0.h,
-                                    color: Color.fromRGBO(2, 43, 60, 1),
-                                  ),
+                                separatorBuilder: (context, index) => Divider(
+                                  thickness: 1.0.h,
+                                  color: Color.fromRGBO(2, 43, 60, 1),
                                 ),
                                 physics: ScrollPhysics(),
                                 shrinkWrap: true,
@@ -265,13 +262,13 @@ class _SearchHomeState extends State<SearchHome> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 12.0.w),
-        height: 90.0.h,
+        height: MediaQuery.of(context).size.height / 8.5, //90.0.h
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-                width: 70.0.w,
-                height: 70.0.h,
+                width: 73.0.w,
+                height: 73.0.h,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(

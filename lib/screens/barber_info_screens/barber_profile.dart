@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
 import 'package:saloonplus/screens/barber_info_screens/info.dart';
+import 'package:saloonplus/screens/barber_info_screens/reviews.dart';
+import 'package:saloonplus/screens/barber_info_screens/services.dart';
 
 class BarberProfile extends StatefulWidget {
   @override
@@ -34,7 +36,7 @@ class _BarberProfileState extends State<BarberProfile>
           child: Column(
             children: <Widget>[
               Container(
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withOpacity(0.8),
                 height: _height / 4.0.h,
                 padding:
                     EdgeInsets.symmetric(vertical: 12.0.h, horizontal: 12.0.w),
@@ -111,17 +113,13 @@ class _BarberProfileState extends State<BarberProfile>
               Expanded(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      vertical: 12.0.h, horizontal: 12.0.w),
+                      vertical: 8.0.h, horizontal: 8.0.w),
                   child: TabBarView(
                     controller: _barberProfileTabController,
                     children: <Widget>[
                       barberInfoTab(context),
-                      Container(
-                        color: Colors.yellow,
-                      ),
-                      Container(
-                        color: Colors.blue,
-                      )
+                      barberServicesTab(context),
+                      barberReviewsTav(context),
                     ],
                   ),
                 ),

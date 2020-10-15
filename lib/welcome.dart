@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:saloonplus/screens/barber_info_screens/barber_profile.dart';
 import 'package:saloonplus/screens/components/bottom_nav.dart';
 import 'ThemeData/fontstyle.dart';
 

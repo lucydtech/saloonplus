@@ -1,12 +1,23 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget barberInfoTab(BuildContext context) {
 
   var _height = MediaQuery.of(context).size.height;
   var _width = MediaQuery.of(context).size.width;
+
+  Completer<GoogleMapController> _googleMapsController = Completer();
+
+  CameraPosition _camPosition = CameraPosition(
+    target: LatLng(17.3850, 78.4867),
+    zoom: 14.4746,
+  );
 
   return Container(
     child: Column(
@@ -17,7 +28,7 @@ Widget barberInfoTab(BuildContext context) {
             color: Font_Style.middleColor,
           ),
           height: _height / 11.5.h, //60.0.h
-          padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 5.0.w),
+          padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 3.0.w),
           margin: EdgeInsets.symmetric(vertical: 5.0.h,),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -166,14 +177,55 @@ Widget barberInfoTab(BuildContext context) {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
-            color: Font_Style.middleColor,
           ),
           height: _height / 6.0.h, //60.0.h
           width: _width,
-          padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 12.0.w),
           margin: EdgeInsets.symmetric(vertical: 5.0.h,),
+          child: Stack(
+            children: <Widget>[
+              GoogleMap(
+                onMapCreated: (GoogleMapController controller) {
+                  _googleMapsController.complete(controller);
+                },
+                initialCameraPosition: _camPosition,
+                //scrollGesturesEnabled: true,
+                //tiltGesturesEnabled: true,
+                trafficEnabled: false,
+                //compassEnabled: true,
+                //rotateGesturesEnabled: true,
+                //myLocationEnabled: true,
+                mapType: MapType.normal,
+                //zoomGesturesEnabled: true,
+              ),
+              InkWell(
+                  onTap: () {
+                    //openGoogleMaps(17.3850, 78.4867);
+                    launchAnyMap(lat: "17.3850", long: "78.4867");
+                  },
+                  child: Container()),
+            ],
+          ),
         ),
       ],
     ),
   );
+}
+
+Future<void> openGoogleMaps({double latitude = 17.3850, double longitude = 78.4867}) async {
+String googleUrl = 'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+if (await canLaunch(googleUrl)) {
+await launch(googleUrl);
+}
+else {
+throw 'Could not open the map.';
+}
+}
+
+launchAnyMap({String lat = "17.3850", String long = "78.4867"}) async{
+  var mapSchema = 'geo:$lat,$long';
+  if (await canLaunch(mapSchema)) {
+    await launch(mapSchema);
+  } else {
+    throw 'Could not launch $mapSchema';
+  }
 }
