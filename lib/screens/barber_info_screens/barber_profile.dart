@@ -15,7 +15,7 @@ class _BarberProfileState extends State<BarberProfile>
     with SingleTickerProviderStateMixin {
   TabController _barberProfileTabController;
 
-  var _height, _width;
+  double _height, _width;
 
   @override
   void initState() {
@@ -35,37 +35,48 @@ class _BarberProfileState extends State<BarberProfile>
         child: Container(
           child: Column(
             children: <Widget>[
-              Container(
-                color: Colors.white.withOpacity(0.8),
-                height: _height / 4.0.h,
-                padding:
+              Stack(
+                children: <Widget>[
+                  Container(
+                    color: Colors.white.withOpacity(0.8),
+                    height: _height / 4.0.h,
+                    padding:
                     EdgeInsets.symmetric(vertical: 12.0.h, horizontal: 12.0.w),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                        width: _height / 5.5, //140.0.w
-                        height: _height / 5.5, //140.0.h
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage(
-                                    "assets/images/barber_shop.png")))),
-                    SizedBox(
-                      width: 18.0.w,
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                            width: _height / 5.5, //140.0.w
+                            height: _height / 5.5, //140.0.h
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: AssetImage("assets/images/barber_shop.png")
+                                )
+                            )
+                        ),
+                        SizedBox(
+                          width: 18.0.w,
+                        ),
+                        Expanded(
+                          child: Text(
+                            "Barber Shop Name",
+                            style: Font_Style()
+                                .montserrat_Bold(Font_Style.middleColor, 22),
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: Text(
-                        "Barber Shop Name",
-                        style: Font_Style()
-                            .montserrat_Bold(Font_Style.middleColor, 22),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 5.0.h,
+                  ),
+                  Positioned(
+                      left: 7.0.w,
+                      top: 7.0.h,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                          child: Icon(Icons.arrow_back, size: 26.0, color: Font_Style.primaryColor,)))
+                ],
               ),
               Container(
                 height: 50.0.h,

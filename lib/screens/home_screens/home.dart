@@ -30,7 +30,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         backgroundColor: Font_Style.secondaryColor,
         elevation: 3.0,
         onPressed: () {
-          ///////////////////////////////
+        showSearch(
+            context: context,
+            delegate: BarberSearch());
         },
         icon: Icon(
           Icons.add,
@@ -43,10 +45,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         ),
       ),
       appBar: AppBar(
+        elevation: 0.0,
         leading: Container(),
         title: Text(
           "My Barbers",
-          style: Font_Style().montserrat_Bold(Font_Style.secondaryColor, 22),
+          style: Font_Style().montserrat_Bold(Font_Style.secondaryColor, 20),
         ),
         centerTitle: true,
         actions: <Widget>[
@@ -79,7 +82,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             scrollDirection: Axis.vertical,
             child: ListView.separated(
               separatorBuilder: (context, index) => Container(
-                height: 5.0.h,
+                height: 3.0.h,
                 color: Font_Style.dividerColor,
               ),
               physics: ScrollPhysics(),
@@ -159,7 +162,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                               ),
                               RatingBar(
                                 initialRating: 4.2,
-                                minRating: 1,
+                                minRating: 0,
                                 direction: Axis.horizontal,
                                 allowHalfRating: true,
                                 itemCount: 5,
@@ -170,9 +173,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   size: 1.0,
                                   color: Colors.amber,
                                 ),
-                                onRatingUpdate: (rating) {
-                                  print(rating);
-                                },
                               ),
                               Text(
                                 "(15)",
@@ -270,4 +270,71 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
     );
   }
+}
+
+class BarberSearch extends SearchDelegate<String> {
+
+  final cities = ["Hyderabad", "Secunderabad", "Guntur", "Visakhapatnam", "Ghaziabad", "New Delhi", "Patna", "Coimbatore", "Mizoram", "Ahmedabad", "Jaipur", "Jodhpur"];
+  final recentCities = ["Visakhapatnam", "Ghaziabad", "New Delhi"];
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [IconButton(icon: Icon(Icons.close, color: Font_Style.primaryColor, size: 18,), onPressed: () {
+      query = "";
+    },)];
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Container(
+        child: Icon(
+          Icons.arrow_back,
+          color: Font_Style.primaryColor,
+          size: 24.0,
+        ),
+      ),
+      onPressed: () {
+        close(context, null);
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final suggestionList = query.isEmpty?recentCities:cities.where((item) => item.toLowerCase().startsWith(query.toLowerCase())).toList();
+
+    return Container(
+      color: Colors.white,
+      child: ListView.builder(itemBuilder: (context, index) => ListTile(
+        onTap: () {
+          showResults(context);
+        },
+        //leading: Icon(Icons.location_city),
+        title: Center(
+          child: RichText(text: TextSpan(
+              text: suggestionList[index].substring(0, query.length),
+              style: Font_Style().montserrat_Bold(null, 18),
+              children: [TextSpan(
+                  text: suggestionList[index].substring(query.length),
+                  style: Font_Style().montserrat_medium(null, 18)
+              )]
+          ),),
+        ),
+      ),
+        itemCount: suggestionList.length,),
+    );
+  }
+  BarberSearch({
+    String hintText = "Search Barber",
+  }) : super(
+    searchFieldLabel: hintText,
+    keyboardType: TextInputType.text,
+    textInputAction: TextInputAction.search,
+  );
 }

@@ -30,7 +30,7 @@ class _SearchHomeState extends State<SearchHome> {
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(left: 7.0.w, right: 7.0.w, top: 5.0.h, bottom: 2.0.h),
+              padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 5.0.h, bottom: 2.0.h),
               child: InkWell(
                 onTap: () {
                   setState(() {
@@ -83,7 +83,7 @@ class _SearchHomeState extends State<SearchHome> {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(left: 14.0.w, right: 14.0.w, top: 5.0.h, bottom: 7.0.h),
+                          padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 5.0.h, bottom: 7.0.h),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -292,7 +292,7 @@ class _SearchHomeState extends State<SearchHome> {
                         Text("4.2", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),),
                         RatingBar(
                           initialRating: 4.2,
-                          minRating: 1,
+                          minRating: 0,
                           direction: Axis.horizontal,
                           allowHalfRating: true,
                           itemCount: 5,
@@ -303,9 +303,6 @@ class _SearchHomeState extends State<SearchHome> {
                             size: 1.0,
                             color: Colors.amber,
                           ),
-                          onRatingUpdate: (rating) {
-                            print(rating);
-                          },
                         ),
                         Text("(15)", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),),
                         Spacer(),

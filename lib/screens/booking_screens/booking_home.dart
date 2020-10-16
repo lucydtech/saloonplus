@@ -88,7 +88,7 @@ class _BookingHomeState extends State<BookingHome> with SingleTickerProviderStat
                         scrollDirection: Axis.vertical,
                         child: ListView.separated(
                           separatorBuilder: (context, index) => Container(
-                            height: 3.0.h,
+                            height: 2.0.h,
                             color: Font_Style.dividerColor,
                           ),
                           physics: ScrollPhysics(),

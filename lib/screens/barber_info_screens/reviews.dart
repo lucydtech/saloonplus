@@ -30,7 +30,7 @@ Widget barberReviewsTav(BuildContext context) {
                 Font_Style.secondaryColor, 14),),
             RatingBar(
               initialRating: 4.2,
-              minRating: 1,
+              minRating: 0,
               direction: Axis.horizontal,
               allowHalfRating: true,
               itemCount: 5,
@@ -42,9 +42,6 @@ Widget barberReviewsTav(BuildContext context) {
                     size: 1.0,
                     color: Colors.amber,
                   ),
-              onRatingUpdate: (rating) {
-                print(rating);
-              },
             ),
             Text("(15)", style: Font_Style().montserrat_SemiBold(
                 Font_Style.secondaryColor, 14),),
@@ -109,10 +106,12 @@ Widget _barberReviewsListItem(BuildContext context, double _height, double _widt
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Flexible(child: Text("Raju Raju RajuRajuRajuRajuRajuRajuRaju", textDirection: TextDirection.ltr, textAlign: TextAlign.left, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),)),
+                      Container(
+                        width: _width / 2.2,
+                          child: Text("Raju Raju Raju Raju Raju Raju", textDirection: TextDirection.ltr, textAlign: TextAlign.left, overflow: TextOverflow.clip, maxLines: 1, style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),)),
                       RatingBar(
                         initialRating: 4.2,
-                        minRating: 1,
+                        minRating: 0,
                         direction: Axis.horizontal,
                         allowHalfRating: true,
                         itemCount: 5,
@@ -124,9 +123,6 @@ Widget _barberReviewsListItem(BuildContext context, double _height, double _widt
                               size: 1.0,
                               color: Colors.amber,
                             ),
-                        onRatingUpdate: (rating) {
-                          print(rating);
-                        },
                       ),
                     ],
                   ),
@@ -186,10 +182,12 @@ void showDialog(BuildContext context) {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                Flexible(child: Material(child: Text("Raju Raju RajuRajuRajuRajuRajuRajuRaju", textDirection: TextDirection.ltr, textAlign: TextAlign.left, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style().montserrat_SemiBold(Font_Style.primaryColor, 18),))),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2.5,
+                                    child: Material(child: Text("Raju Raju Raju Raju Raju Raju", textDirection: TextDirection.ltr, textAlign: TextAlign.left, overflow: TextOverflow.clip, maxLines: 1, style: Font_Style().montserrat_SemiBold(Font_Style.primaryColor, 18),))),
                                 RatingBar(
                                   initialRating: 4.2,
-                                  minRating: 1,
+                                  minRating: 0,
                                   direction: Axis.horizontal,
                                   allowHalfRating: true,
                                   itemCount: 5,
@@ -201,9 +199,6 @@ void showDialog(BuildContext context) {
                                         size: 1.0,
                                         color: Colors.amber,
                                       ),
-                                  onRatingUpdate: (rating) {
-                                    print(rating);
-                                  },
                                 ),
                               ],
                             ),
