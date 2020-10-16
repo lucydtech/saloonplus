@@ -53,7 +53,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               padding:
                   EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 12.0.w),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,

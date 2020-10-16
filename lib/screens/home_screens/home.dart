@@ -182,36 +182,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                               Spacer(flex: 3,),
                               Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(2.0)),
-                                  color: Font_Style.secondaryColor,
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 0.7.h, horizontal: 0.7.w),
-                                height: 12.0.h,
-                                width: 12.0.w,
-                                child: Center(
-                                    child: Text(
-                                  "M",
-                                  style: Font_Style().montserrat_Bold(
-                                      Font_Style.middleColor, 10),
-                                )),
+                                    color: Font_Style.secondaryColor, borderRadius: BorderRadius.circular(2.0)),
+                                padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
+                                height: 14.0.h,
+                                width: 14.0.w,
+                                child: Center(child: Icon(FontAwesomeIcons.male, color: Font_Style.middleColor, size: 12,)),
                               ),
-                              Spacer(flex: 1,),
+                              SizedBox(width: 8.0.w,),
                               Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(2.0)),
-                                  color: Font_Style.secondaryColor,
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 0.7.h, horizontal: 0.7.w),
-                                height: 12.0.h,
-                                width: 12.0.w,
-                                child: Center(
-                                    child: Text(
-                                  "F",
-                                  style: Font_Style().montserrat_Bold(
-                                      Font_Style.middleColor, 10),
-                                )),
+                                    color: Font_Style.secondaryColor, borderRadius: BorderRadius.circular(2.0)),
+                                padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
+                                height: 14.0.h,
+                                width: 14.0.w,
+                                child: Center(child: Icon(FontAwesomeIcons.female, color: Font_Style.middleColor, size: 12,)),
                               ),
                               Spacer(flex: 3,),
                               Icon(

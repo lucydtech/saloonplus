@@ -31,7 +31,7 @@ Widget _barberServicesListItem(double _height, double _width) {
   return Container(
     height: _height / 10, //80.0.h
     color: Font_Style.middleColor,
-    padding: EdgeInsets.symmetric(horizontal: 5.0.w, vertical: 14.0.h),
+    padding: EdgeInsets.symmetric(horizontal: 7.0.w, vertical: 14.0.h),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,13 +42,13 @@ Widget _barberServicesListItem(double _height, double _width) {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Hair Cut", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style().montserrat_Bold(Font_Style.secondaryColor, 22),),
+              Text("Hair Cut", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style().montserrat_Bold(Font_Style.secondaryColor, 18),),
               Spacer(),
               Text("0 Hrs 40 Min", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),)
             ],
           ),
         ),
-        Text("₹ 100", style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 18),),
+        Text("₹ 100", style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),),
       ],
     ),
   );

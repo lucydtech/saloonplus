@@ -48,7 +48,7 @@ Widget barberReviewsTav(BuildContext context) {
           ],
         ),
       ),
-      SizedBox(height: 12.0.h,),
+      SizedBox(height: 7.0.h,),
       Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,

@@ -83,7 +83,7 @@ class _SearchHomeState extends State<SearchHome> {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 5.0.h, bottom: 7.0.h),
+                          margin: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 5.0.h, bottom: 7.0.h),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -91,6 +91,8 @@ class _SearchHomeState extends State<SearchHome> {
                                 onTap: () {
                                   setState(() {
                                     _isMaleSelected = !_isMaleSelected;
+                                    if(!_isFemaleSelected)
+                                      _isFemaleSelected = !_isFemaleSelected;
                                   });
                                 },
                                 child: Container(
@@ -100,7 +102,7 @@ class _SearchHomeState extends State<SearchHome> {
                                   ),
                                   height: 32.0.h,
                                   width: 43.0.w,
-                                  child: Center(child: Text("M", style: Font_Style().montserrat_Bold(_isMaleSelected ? Font_Style.secondaryColor : Font_Style.secondaryColorWithOpacity, 14),)),
+                                  child: Center(child: Icon(FontAwesomeIcons.male, color: Font_Style.secondaryColor, size: 20.0,)),
                                 ),
                               ),
                               Spacer(flex: 1,),
@@ -108,6 +110,8 @@ class _SearchHomeState extends State<SearchHome> {
                                 onTap: () {
                                   setState(() {
                                     _isFemaleSelected = !_isFemaleSelected;
+                                    if(!_isMaleSelected)
+                                      _isMaleSelected = !_isMaleSelected;
                                   });
                                 },
                                 child: Container(
@@ -117,7 +121,7 @@ class _SearchHomeState extends State<SearchHome> {
                                   ),
                                   height: 32.0.h,
                                   width: 43.0.w,
-                                  child: Center(child: Text("F", style: Font_Style().montserrat_Bold(_isFemaleSelected ? Font_Style.secondaryColor : Font_Style.secondaryColorWithOpacity, 14),)),
+                                  child: Center(child: Icon(FontAwesomeIcons.female, color: Font_Style.secondaryColor, size: 20.0,)),
                                 ),
                               ),
                               Spacer(flex: 2,),
@@ -306,31 +310,22 @@ class _SearchHomeState extends State<SearchHome> {
                         ),
                         Text("(15)", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),),
                         Spacer(),
-                        Card(
-                          elevation: 3.0,
-                          color: Font_Style.secondaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
-                            height: 12.0.h,
-                            width: 12.0.w,
-                            child: Center(child: Text("M", style: Font_Style().montserrat_Bold(Font_Style.middleColor, 10),)),
-                          ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Font_Style.secondaryColor, borderRadius: BorderRadius.circular(2.0)),
+                          padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
+                          height: 14.0.h,
+                          width: 14.0.w,
+                          child: Center(child: Icon(FontAwesomeIcons.male, color: Font_Style.middleColor, size: 12,)),
                         ),
-                        Card(
-                          elevation: 3.0,
-                          color: Font_Style.secondaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
-                            height: 12.0.h,
-                            width: 12.0.w,
-                            child: Center(child: Text("F", style: Font_Style().montserrat_Bold(Font_Style.middleColor, 10),)),
-                          ),
+                        SizedBox(width: 8.0.w,),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Font_Style.secondaryColor, borderRadius: BorderRadius.circular(2.0)),
+                          padding: EdgeInsets.symmetric(vertical: 0.7.h, horizontal: 0.7.w),
+                          height: 14.0.h,
+                          width: 14.0.w,
+                          child: Center(child: Icon(FontAwesomeIcons.female, color: Font_Style.middleColor, size: 12,)),
                         ),
                         Spacer(),
                         Icon(Icons.directions, size: 16.0.h, color: Font_Style.secondaryColor,),
