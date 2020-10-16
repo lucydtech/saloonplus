@@ -70,15 +70,18 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       endDrawer: MainDrawer(),
       body: Container(
           padding: EdgeInsets.only(
-            left: 12.0.w,
-            right: 12.0.w,
+            left: 5.0.w,
+            right: 5.0.w,
           ),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Color.fromRGBO(2, 43, 60, 1),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (context, index) => Container(
+                height: 5.0.h,
+                color: Font_Style.dividerColor,
+              ),
               physics: ScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
@@ -94,8 +97,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget _homeListItem() {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromRGBO(3, 72, 99, 1),
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+        color: Font_Style.middleColor,
         boxShadow: [
           BoxShadow(
             color: Color.fromRGBO(2, 57, 79, 0.3),
@@ -103,9 +105,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             blurRadius: 6.0,
           ),
         ],
-      ),
-      margin: EdgeInsets.symmetric(
-        vertical: 8.0.h,
       ),
       height: 210.0.h,
       child: Column(
@@ -118,7 +117,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 100.0.h,
               padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 7.0.w),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                       width: 80.0,
@@ -129,65 +127,64 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                               fit: BoxFit.fill,
                               image:
                                   AssetImage("assets/images/barber_shop.png")))),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 130.0.w,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "Beardo Barber Shop",
-                          textAlign: TextAlign.left,
-                          overflow: TextOverflow.clip,
-                          style: Font_Style()
-                              .montserrat_SemiBold(Font_Style.secondaryColor, 16),
-                        ),
-                        Text(
-                          "Bhavana colony, Center point, Bowenpally, 1-28-44/A, Plot no 103, Secunderabad, Telangana 500011",
-                          maxLines: 2,
-                          textAlign: TextAlign.left,
-                          overflow: TextOverflow.ellipsis,
-                          style: Font_Style()
-                              .montserrat_medium(Font_Style.secondaryColor, 12),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "4.2",
-                              style: Font_Style().montserrat_medium(
-                                  Font_Style.secondaryColor, 14),
-                            ),
-                            RatingBar(
-                              initialRating: 4.2,
-                              minRating: 1,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              itemCount: 5,
-                              itemSize: 14.0,
-                              itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                size: 1.0,
-                                color: Colors.amber,
+                  SizedBox(width: 12.0.w,),
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "Beardo Barber Shop",
+                            textAlign: TextAlign.left,
+                            overflow: TextOverflow.clip,
+                            style: Font_Style()
+                                .montserrat_SemiBold(Font_Style.secondaryColor, 16),
+                          ),
+                          Text(
+                            "Bhavana colony, Center point, Bowenpally, 1-28-44/A, Plot no 103, Secunderabad, Telangana 500011",
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            overflow: TextOverflow.ellipsis,
+                            style: Font_Style()
+                                .montserrat_medium(Font_Style.secondaryColor, 14),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "4.2",
+                                style: Font_Style().montserrat_medium(
+                                    Font_Style.secondaryColor, 14),
                               ),
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                            ),
-                            Text(
-                              "(15)",
-                              style: Font_Style().montserrat_medium(
-                                  Font_Style.secondaryColor, 14),
-                            ),
-                            Spacer(),
-                            Card(
-                              elevation: 3.0,
-                              color: Font_Style.secondaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(2.0),
+                              RatingBar(
+                                initialRating: 4.2,
+                                minRating: 1,
+                                direction: Axis.horizontal,
+                                allowHalfRating: true,
+                                itemCount: 5,
+                                itemSize: 14.0,
+                                itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                                itemBuilder: (context, _) => Icon(
+                                  Icons.star,
+                                  size: 1.0,
+                                  color: Colors.amber,
+                                ),
+                                onRatingUpdate: (rating) {
+                                  print(rating);
+                                },
                               ),
-                              child: Container(
+                              Text(
+                                "(15)",
+                                style: Font_Style().montserrat_medium(
+                                    Font_Style.secondaryColor, 14),
+                              ),
+                              Spacer(flex: 3,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                                  color: Font_Style.secondaryColor,
+                                ),
                                 padding: EdgeInsets.symmetric(
                                     vertical: 0.7.h, horizontal: 0.7.w),
                                 height: 12.0.h,
@@ -196,17 +193,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                     child: Text(
                                   "M",
                                   style: Font_Style().montserrat_Bold(
-                                      Color.fromRGBO(3, 72, 99, 1), 10),
+                                      Font_Style.middleColor, 10),
                                 )),
                               ),
-                            ),
-                            Card(
-                              elevation: 3.0,
-                              color: Font_Style.secondaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(2.0),
-                              ),
-                              child: Container(
+                              Spacer(flex: 1,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                                  color: Font_Style.secondaryColor,
+                                ),
                                 padding: EdgeInsets.symmetric(
                                     vertical: 0.7.h, horizontal: 0.7.w),
                                 height: 12.0.h,
@@ -215,34 +210,37 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                     child: Text(
                                   "F",
                                   style: Font_Style().montserrat_Bold(
-                                      Color.fromRGBO(3, 72, 99, 1), 10),
+                                      Font_Style.middleColor, 10),
                                 )),
                               ),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.directions,
-                              size: 16.0.h,
-                              color: Font_Style.secondaryColor,
-                            ),
-                            Text(
-                              "5.0 KM",
-                              style: Font_Style().montserrat_SemiBold(
-                                  Font_Style.secondaryColor, 14),
-                            ),
-                          ],
-                        ),
-                      ],
+                              Spacer(flex: 3,),
+                              Icon(
+                                Icons.directions,
+                                size: 16.0.h,
+                                color: Font_Style.secondaryColor,
+                              ),
+                              Text(
+                                "5.0 KM",
+                                style: Font_Style().montserrat_SemiBold(
+                                    Font_Style.secondaryColor, 14),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          Divider(
-            color: Color.fromRGBO(2, 43, 60, 1),
-            thickness: 1.5.h,
-            height: 7.0.h,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+            child: Divider(
+              color: Font_Style.dividerColor,
+              thickness: 1.5.h,
+              height: 7.0.h,
+            ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 7.0.w),

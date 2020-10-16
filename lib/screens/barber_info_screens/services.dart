@@ -15,7 +15,7 @@ Widget barberServicesTab(BuildContext context) {
         separatorBuilder: (context, index) => Container(
           height: 1.0.h,
           width: _width,
-          color: Font_Style.secondaryColor.withOpacity(0.7),
+          color: Font_Style.dividerColor,
         ),
         physics: ScrollPhysics(),
         shrinkWrap: true,

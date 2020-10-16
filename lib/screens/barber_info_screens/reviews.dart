@@ -20,7 +20,7 @@ Widget barberReviewsTav(BuildContext context) {
       Container(
         height: _height / 15,
         color: Font_Style.middleColor,
-        padding: EdgeInsets.symmetric(vertical: 3.0.h, horizontal: 5.0.w),
+        padding: EdgeInsets.symmetric(vertical: 5.0.h, horizontal: 5.0.w),
         child: Row(
           children: <Widget>[
             Text("Overall Rating", style: Font_Style().montserrat_Bold(
@@ -60,7 +60,7 @@ Widget barberReviewsTav(BuildContext context) {
                     Container(
                       height: 1.0.h,
                       width: _width,
-                      color: Font_Style.secondaryColor.withOpacity(0.8),
+                      color: Font_Style.dividerColor,
                     ),
                 physics: ScrollPhysics(),
                 shrinkWrap: true,

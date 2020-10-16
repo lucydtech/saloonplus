@@ -79,14 +79,14 @@ class _BarberProfileState extends State<BarberProfile>
                       _barberProfileTabController.index = x;
                     },
                     labelPadding:
-                        EdgeInsets.only(bottom: 10.5.h, left: 0, right: 0),
+                        EdgeInsets.only(bottom: 7.0.h,),
                     unselectedLabelColor:
                         Font_Style.secondaryColor.withOpacity(0.7),
                     labelColor: Font_Style.secondaryColor,
                     labelStyle: Font_Style()
-                        .montserrat_Bold(Font_Style.secondaryColor, 22),
+                        .montserrat_Bold(Font_Style.secondaryColor, 18),
                     unselectedLabelStyle: Font_Style()
-                        .montserrat_SemiBold(Font_Style.secondaryColor, 22),
+                        .montserrat_SemiBold(Font_Style.secondaryColor, 18),
                     tabs: <Widget>[
                       Text(
                         "INFO",
@@ -112,12 +112,11 @@ class _BarberProfileState extends State<BarberProfile>
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 8.0.h, horizontal: 8.0.w),
+                  padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, bottom: 5.0.h),
                   child: TabBarView(
                     controller: _barberProfileTabController,
                     children: <Widget>[
-                      barberInfoTab(context),
+                      BarberInfoTab(),
                       barberServicesTab(context),
                       barberReviewsTav(context),
                     ],
