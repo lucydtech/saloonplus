@@ -8,6 +8,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:saloonplus/screens/service_payment_screens/select_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
@@ -18,6 +19,7 @@ class BarberInfoTab extends StatefulWidget {
 
 class _BarberInfoTabState extends State<BarberInfoTab> {
 
+  String _barberShopId = "barber shop id";
   bool _ratingShowPrefix = true;
   String _ratingCounterText = "0";
   FocusNode _ratingFocusNode = FocusNode();
@@ -37,8 +39,8 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
 
   @override
   Widget build(BuildContext context) {
-    var _height = MediaQuery.of(context).size.height;
-    var _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
 
     return Container(
       child: SingleChildScrollView(
@@ -55,22 +57,27 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.book,
-                        color: Font_Style.secondaryColor,
-                        size: 28,
-                      ),
-                      Spacer(),
-                      Text(
-                        "Book",
-                        style: Font_Style()
-                            .montserrat_SemiBold(Font_Style.secondaryColor, 14),
-                      )
-                    ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SelectService(inputDate: DateTime.now(), barberShopId: _barberShopId.toString(),)));
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.book,
+                          color: Font_Style.secondaryColor,
+                          size: 28,
+                        ),
+                        Spacer(),
+                        Text(
+                          "Book",
+                          style: Font_Style()
+                              .montserrat_SemiBold(Font_Style.secondaryColor, 14),
+                        )
+                      ],
+                    ),
                   ),
                   InkWell(
                     onTap: () {

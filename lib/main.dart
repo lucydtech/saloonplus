@@ -4,10 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:saloonplus/screens/barber_info_screens/barber_profile.dart';
 import 'package:saloonplus/screens/components/bottom_nav.dart';
 import 'package:saloonplus/screens/login_signup/loginandsignup.dart';
+import 'package:saloonplus/screens/service_payment_screens/select_service.dart';
 import 'package:saloonplus/welcome.dart';
 import 'ThemeData/fontstyle.dart';
 
-Future main() async{
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/login_signup': (context) => LoginSignUp(),
         '/bottom_nav': (context) => BottomNav(),
         '/barber_profile': (context) => BarberProfile(),
+        '/select_service': (context) => SelectService(),
       },
       initialRoute: '/',
     );

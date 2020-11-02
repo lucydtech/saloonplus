@@ -44,9 +44,10 @@ class _BarberProfileState extends State<BarberProfile>
                     EdgeInsets.symmetric(vertical: 12.0.h, horizontal: 12.0.w),
                     child: Row(
                       children: <Widget>[
+                        SizedBox(width: 18.0.w,),
                         Container(
-                            width: _height / 5.5, //140.0.w
-                            height: _height / 5.5, //140.0.h
+                            width: _height / 6.0, //140.0.w
+                            height: _height / 6.0, //140.0.h
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(

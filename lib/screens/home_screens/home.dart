@@ -6,19 +6,21 @@ import 'package:saloonplus/ThemeData/fontstyle.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:saloonplus/screens/components/main_drawer.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:saloonplus/screens/service_payment_screens/select_service.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-DatePickerController _controller = DatePickerController();
-DateTime _selectedValue;
+DatePickerController _datePickerControllerHome = DatePickerController();
+DateTime _selectedDateValueHome;
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+
   @override
   void initState() {
-    _selectedValue = DateTime.now();
+    _selectedDateValueHome = DateTime.now();
     super.initState();
   }
 
@@ -90,14 +92,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               scrollDirection: Axis.vertical,
               itemCount: 10,
               itemBuilder: (context, i) {
-                return _homeListItem();
+                return _homeListItem(i);
               },
             ),
           )),
     );
   }
 
-  Widget _homeListItem() {
+  Widget _homeListItem(int index) {
     return Container(
       decoration: BoxDecoration(
         color: Font_Style.middleColor,
@@ -233,19 +235,19 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               width: 60.0.h,
               height: 80.0.h,
               daysCount: 30,
-              controller: _controller,
+              controller: _datePickerControllerHome,
               initialSelectedDate: DateTime.now(),
-              selectionColor: Colors.black,
-              selectedTextColor: Colors.white,
+              selectionColor: Font_Style.primaryColor,
+              selectedTextColor: Font_Style.secondaryColor,
               inactiveDates: [
                 DateTime.now().add(Duration(days: 3)),
                 DateTime.now().add(Duration(days: 4)),
                 DateTime.now().add(Duration(days: 7))
               ],
               onDateChange: (date) {
-                // New date selected
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SelectService(inputDate: date, barberShopId: index.toString(),)));
                 setState(() {
-                  _selectedValue = date;
+                  _selectedDateValueHome = date;
                 });
               },
             ),

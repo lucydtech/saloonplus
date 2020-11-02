@@ -14,10 +14,11 @@ class _WelcomeState extends State<Welcome> {
   @override
   void initState() {
     Timer(Duration(milliseconds: 200), () {
-      Navigator.push(
+      /*Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => BottomNav(currentindex: 1,)),
-      );
+      );*/
+      Navigator.pushNamed(context, "/login_signup");
     });
     super.initState();
   }

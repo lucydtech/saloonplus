@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
+import 'package:saloonplus/screens/components/bottom_nav.dart';
 
 class LoginSignUp extends StatefulWidget {
   @override
@@ -304,12 +305,18 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
         onTap: (){
           if(btnTitle == "LOG IN") {
             if(loginFormKey.currentState.validate()) {
-              Navigator.pushNamed(context, "/bottom_nav");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BottomNav(currentindex: 1,)),
+              );
             }
           }
           else {
             if(signUpFormKey.currentState.validate()) {
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BottomNav(currentindex: 1,)),
+              );
             }
           }
         },
