@@ -40,6 +40,7 @@ class _SelectServiceState extends State<SelectService> {
     _noOfTimeCards = ((_endTime.difference(_startTime).inMinutes -15) / 15).floor();
     _selectedTime = DateTime(_startTime.year, _startTime.month, _startTime.day, _startTime.hour, _startTime.minute);
     _selectedDateValueService = widget.inputDate;
+    //_datePickerControllerService.animateToDate(_selectedDateValueService, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
     super.initState();
   }
 
