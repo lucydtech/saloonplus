@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:saloonplus/screens/barber_info_screens/barber_profile.dart';
 import 'package:saloonplus/screens/components/bottom_nav.dart';
 import 'package:saloonplus/screens/login_signup/loginandsignup.dart';
+import 'package:saloonplus/screens/service_payment_screens/add_card.dart';
 import 'package:saloonplus/screens/service_payment_screens/select_service.dart';
+import 'package:saloonplus/screens/service_payment_screens/summary.dart';
 import 'package:saloonplus/welcome.dart';
 import 'ThemeData/fontstyle.dart';
 
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
         '/bottom_nav': (context) => BottomNav(),
         '/barber_profile': (context) => BarberProfile(),
         '/select_service': (context) => SelectService(),
+        '/summary': (context) => Summary(),
+        '/add_card': (context) => AddCard(),
       },
       initialRoute: '/',
     );
