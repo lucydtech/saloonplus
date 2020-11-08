@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
 
 class Summary extends StatefulWidget {
+  DateTime dateSelected, timeSelected;
+  Summary({this.dateSelected, this.timeSelected});
+
   @override
   _SummaryState createState() => _SummaryState();
 }
@@ -19,6 +22,8 @@ class _SummaryState extends State<Summary> {
   Widget build(BuildContext context) {
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
+
+    final Summary _summaryArgs = ModalRoute.of(context).settings.arguments;
     
     return Scaffold(
       appBar: AppBar(
@@ -143,6 +148,12 @@ class _SummaryState extends State<Summary> {
                         children: <Widget>[
                           Text("Total Services:", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
                           SizedBox(height: 12.0.h,),
+                          Text("Service Date:", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
+                          SizedBox(height: 12.0.h,),
+                          Text("Service Time Slot:", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
+                          SizedBox(height: 12.0.h,),
+                          Text("Estimated Time:", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
+                          SizedBox(height: 12.0.h,),
                           Text("Cost of Services:", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
                           SizedBox(height: 12.0.h,),
                           Text("Total before Tax:", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
@@ -160,6 +171,12 @@ class _SummaryState extends State<Summary> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text("6", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
+                          SizedBox(height: 12.0.h,),
+                          Text(_summaryArgs.dateSelected == null ? "undefined date" : "${_summaryArgs.dateSelected.day}-${_summaryArgs.dateSelected.month}-${_summaryArgs.dateSelected.year}", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
+                          SizedBox(height: 12.0.h,),
+                          Text(_summaryArgs.timeSelected == null? "undefined time" : "${_summaryArgs.timeSelected.hour > 12 ? _summaryArgs.timeSelected.hour - 12 : _summaryArgs.timeSelected.hour} : ${_summaryArgs.timeSelected.minute == 0 ? "00" : _summaryArgs.timeSelected.minute} ${_summaryArgs.timeSelected.hour > 12 ? "PM" : "AM"}", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
+                          SizedBox(height: 12.0.h,),
+                          Text("0 Hrs 40 Min", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
                           SizedBox(height: 12.0.h,),
                           Text("₹ 601.69", style: Font_Style().montserrat_Regular(Font_Style.secondaryColor, 14.5),),
                           SizedBox(height: 12.0.h,),

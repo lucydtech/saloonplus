@@ -48,7 +48,7 @@ Widget _barberServicesListItem(double _height, double _width) {
             ],
           ),
         ),
-        Text("₹ 100", style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),),
+        Text("₹100", style: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),),
       ],
     ),
   );

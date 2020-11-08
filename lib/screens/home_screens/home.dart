@@ -236,9 +236,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               height: 80.0.h,
               daysCount: 30,
               controller: _datePickerControllerHome,
-              initialSelectedDate: DateTime.now(),
-              selectionColor: Font_Style.primaryColor,
-              selectedTextColor: Font_Style.secondaryColor,
+              selectionColor: Font_Style.middleColor,
+              selectedTextColor: Font_Style.primaryColor,
               inactiveDates: [
                 DateTime.now().add(Duration(days: 3)),
                 DateTime.now().add(Duration(days: 4)),

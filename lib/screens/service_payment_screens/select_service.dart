@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloonplus/ThemeData/fontstyle.dart';
+import 'package:saloonplus/screens/service_payment_screens/summary.dart';
 
 class SelectService extends StatefulWidget {
   DateTime inputDate;
@@ -42,8 +43,7 @@ class _SelectServiceState extends State<SelectService> {
     }
     _noOfTimeCards =
         ((_endTime.difference(_startTime).inMinutes - 15) / 15).floor();
-    _selectedTime = DateTime(_startTime.year, _startTime.month, _startTime.day,
-        _startTime.hour, _startTime.minute);
+    _selectedTime = _startTime.add(Duration(minutes: 15));
     _selectedDateValueService = widget.inputDate;
     //_datePickerControllerService.animateToDate(_selectedDateValueService, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
     super.initState();
@@ -237,7 +237,7 @@ class _SelectServiceState extends State<SelectService> {
                           color: Font_Style.middleColor,
                           onPressed: () {
                             if (_selectedServicesList.length > 0)
-                              Navigator.pushNamed(context, "/summary");
+                              Navigator.pushNamed(context, "/summary", arguments: Summary(dateSelected: _selectedDateValueService, timeSelected: _selectedTime,),);
                             else
                               showSnackBar(context);
                           },
@@ -264,12 +264,7 @@ class _SelectServiceState extends State<SelectService> {
     return InkWell(
       onTap: () {
         setState(() {
-          _selectedTime = DateTime(
-              _startTime.year,
-              _startTime.month,
-              _startTime.day,
-              _startTime.add(Duration(minutes: 15 * (index + 1))).hour,
-              _startTime.add(Duration(minutes: 15 * (index + 1))).minute);
+          _selectedTime = _startTime.add(Duration(minutes: 15 * (index + 1)));
           _selectedTimeIndex = index;
         });
         print(_selectedTime);
@@ -286,7 +281,7 @@ class _SelectServiceState extends State<SelectService> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "${displayTime.hour}:${displayTime.minute == 0 ? "00" : displayTime.minute}",
+              "${displayTime.hour > 12 ? displayTime.hour - 12 : displayTime.hour}:${displayTime.minute == 0 ? "00" : displayTime.minute} ${displayTime.hour > 12 ? "PM" : "AM"}",
               textAlign: TextAlign.center,
               textDirection: TextDirection.ltr,
               overflow: TextOverflow.clip,
@@ -300,72 +295,86 @@ class _SelectServiceState extends State<SelectService> {
   }
 
   Widget _selectServicesListItem(double _height, double _width, int index) {
-    return Container(
-      height: _height / 10, //80.0.h
-      color: Font_Style.middleColor,
-      padding: EdgeInsets.symmetric(horizontal: 7.0.w, vertical: 14.0.h),
-      child: Row(
-        children: <Widget>[
-          Container(
-            height: 14.0.h,
-            width: 14.0.w,
-            color: Font_Style.secondaryColor,
-            child: Checkbox(
-              value: _selectedServicesList.contains(index),
-              onChanged: (val) {
-                if (_selectedServicesList.contains(index)) {
-                  setState(() {
-                    _selectedServicesList.remove(index);
-                  });
-                } else {
-                  setState(() {
-                    _selectedServicesList.add(index);
-                  });
-                }
-                print(_selectedServicesList);
-              },
-              activeColor: Font_Style.secondaryColor,
-              checkColor: Font_Style.primaryColor,
+    return InkWell(
+      onTap: () {
+        if (_selectedServicesList.contains(index)) {
+          setState(() {
+            _selectedServicesList.remove(index);
+          });
+        } else {
+          setState(() {
+            _selectedServicesList.add(index);
+          });
+        }
+        print(_selectedServicesList);
+      },
+      child: Container(
+        height: _height / 10, //80.0.h
+        color: Font_Style.middleColor,
+        padding: EdgeInsets.symmetric(horizontal: 7.0.w, vertical: 14.0.h),
+        child: Row(
+          children: <Widget>[
+            Container(
+              height: 14.0.h,
+              width: 14.0.w,
+              color: Font_Style.secondaryColor,
+              child: Checkbox(
+                value: _selectedServicesList.contains(index),
+                onChanged: (val) {
+                  if (_selectedServicesList.contains(index)) {
+                    setState(() {
+                      _selectedServicesList.remove(index);
+                    });
+                  } else {
+                    setState(() {
+                      _selectedServicesList.add(index);
+                    });
+                  }
+                  print(_selectedServicesList);
+                },
+                activeColor: Font_Style.secondaryColor,
+                checkColor: Font_Style.primaryColor,
+              ),
             ),
-          ),
-          SizedBox(
-            width: 18.0.w,
-          ),
-          Container(
-            width: _width / 2.0.w,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Hair Cut",
-                  textAlign: TextAlign.left,
-                  textDirection: TextDirection.ltr,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: Font_Style()
-                      .montserrat_Bold(Font_Style.secondaryColor, 18),
-                ),
-                Spacer(),
-                Text(
-                  "0 Hrs 40 Min",
-                  textAlign: TextAlign.left,
-                  textDirection: TextDirection.ltr,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: Font_Style()
-                      .montserrat_medium(Font_Style.secondaryColor, 14),
-                )
-              ],
+            SizedBox(
+              width: 18.0.w,
             ),
-          ),
-          Spacer(),
-          Text(
-            "₹ 100",
-            style:
-                Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),
-          ),
-        ],
+            Container(
+              width: _width / 2.0.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Hair Cut",
+                    textAlign: TextAlign.left,
+                    textDirection: TextDirection.ltr,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: Font_Style()
+                        .montserrat_Bold(Font_Style.secondaryColor, 18),
+                  ),
+                  Spacer(),
+                  Text(
+                    "0 Hrs 40 Min",
+                    textAlign: TextAlign.left,
+                    textDirection: TextDirection.ltr,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: Font_Style()
+                        .montserrat_medium(Font_Style.secondaryColor, 14),
+                  )
+                ],
+              ),
+            ),
+            Spacer(),
+            Text(
+              "₹100",
+              style:
+                  Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 16),
+            ),
+          ],
+        ),
       ),
     );
   }
