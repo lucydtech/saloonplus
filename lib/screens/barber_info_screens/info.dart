@@ -306,36 +306,40 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               height: 5.0.h,
             ),
             Container(
+              padding: EdgeInsets.symmetric(
+                  vertical: 8.0.h, horizontal: 5.0.w),
+              width: _width,
+              color: Font_Style.middleColor,
+              child: Text(
+                "Visit Barber :",
+                style: Font_Style().montserrat_Bold(
+                    Font_Style.secondaryColor, 16),
+              ),
+            ),
+            Container(
               height: _height / 1.5.h, //60.0.h
               width: _width,
-              child: Stack(
-                children: <Widget>[
-                  GoogleMap(
-                    onMapCreated: (GoogleMapController controller) {
-                      _googleMapsController.complete(controller);
-                    },
-                    initialCameraPosition: _camPosition,
-                    //scrollGesturesEnabled: true,
-                    //tiltGesturesEnabled: true,
-                    trafficEnabled: false,
-                    //compassEnabled: true,
-                    //rotateGesturesEnabled: true,
-                    //myLocationEnabled: true,
-                    mapType: MapType.normal,
-                    markers: {
-                      Marker(
-                          markerId: _markerId,
-                          position: LatLng(17.3850, 78.4867)),
-                    },
-                    //zoomGesturesEnabled: true,
-                  ),
-                  InkWell(
-                      onTap: () {
-                        //openGoogleMaps(17.3850, 78.4867);
-                        launchAnyMap(lat: "17.3850", long: "78.4867");
-                      },
-                      child: Container()),
-                ],
+              child: GoogleMap(
+                onMapCreated: (GoogleMapController controller) {
+                  _googleMapsController.complete(controller);
+                },
+                initialCameraPosition: _camPosition,
+                scrollGesturesEnabled: true,
+                tiltGesturesEnabled: true,
+                trafficEnabled: false,
+                compassEnabled: true,
+                rotateGesturesEnabled: true,
+                //myLocationEnabled: true,
+                zoomGesturesEnabled: true,
+                zoomControlsEnabled: true,
+                liteModeEnabled: true,
+                mapType: MapType.normal,
+                markers: {
+                  Marker(
+                      markerId: _markerId,
+                      position: LatLng(17.3850, 78.4867)),
+                },
+                //zoomGesturesEnabled: true,
               ),
             ),
           ],

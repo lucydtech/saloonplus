@@ -25,28 +25,46 @@ class _SelectServiceState extends State<SelectService> {
   int _noOfTimeCards = 0, _selectedTimeIndex = 0;
   double _height, _width;
   List<int> _selectedServicesList = [];
+  bool _isServiceAvailable = true;
 
   @override
   void initState() {
+    _selectedDateValueService = widget.inputDate;
     _nowTime = DateTime.now();
     _startTime = DateTime(_nowTime.year, _nowTime.month, _nowTime.day, 9, 0);
     _endTime = DateTime(_nowTime.year, _nowTime.month, _nowTime.day, 20, 0);
-    if (_nowTime.hour - _startTime.hour > 0) {
+
+    _calculateStartTimeNoOfCards();
+
+    _calculateService();
+
+    _selectedTime = _startTime.add(Duration(minutes: 15));
+
+    //_datePickerControllerService.animateToDate(_selectedDateValueService, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
+
+    super.initState();
+  }
+
+  void _calculateStartTimeNoOfCards() {
+    if (_nowTime.hour > _startTime.hour && _nowTime.hour < _endTime.hour && _selectedDateValueService.day == _nowTime.day) {
       _startTime = _nowTime;
     }
     if (_startTime.minute >= 0 && _startTime.minute < 15) {
       _startTime = DateTime(
-          _nowTime.year, _nowTime.month, _nowTime.day, _nowTime.hour, 0);
+          _startTime.year, _startTime.month, _startTime.day, _startTime.hour, 0);
     } else {
-      _startTime = DateTime(_nowTime.year, _nowTime.month, _nowTime.day,
-          _nowTime.hour, (_nowTime.minute / 15).floor() * 15);
+      _startTime = DateTime(_startTime.year, _startTime.month, _startTime.day,
+          _startTime.hour, (_startTime.minute / 15).floor() * 15);
     }
-    _noOfTimeCards =
-        ((_endTime.difference(_startTime).inMinutes - 15) / 15).floor();
-    _selectedTime = _startTime.add(Duration(minutes: 15));
-    _selectedDateValueService = widget.inputDate;
-    //_datePickerControllerService.animateToDate(_selectedDateValueService, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
-    super.initState();
+    _noOfTimeCards = ((_endTime.difference(_startTime).inMinutes - 15) / 15).floor();
+  }
+
+  void _calculateService() {
+    if(_selectedDateValueService.day == _nowTime.day && _nowTime.hour >= _endTime.hour && _nowTime.hour <= 23 || _noOfTimeCards <= 0 || _noOfTimeCards == null) {
+      setState(() {
+        _isServiceAvailable = false;
+      });
+    }
   }
 
   @override
@@ -194,6 +212,8 @@ class _SelectServiceState extends State<SelectService> {
                           DateTime.now().add(Duration(days: 7))
                         ],
                         onDateChange: (date) {
+                          _calculateService();
+
                           setState(() {
                             _selectedDateValueService = date;
                           });
@@ -216,12 +236,17 @@ class _SelectServiceState extends State<SelectService> {
                       color: Font_Style.middleColor,
                       padding: EdgeInsets.symmetric(
                           vertical: 7.0.h, horizontal: 7.0.w),
-                      child: ListView.builder(
+                      child: (_isServiceAvailable)
+                          ? ListView.builder(
                           itemCount: _noOfTimeCards,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return _timePicker(index);
-                          }),
+                          })
+                          : Container(
+                        width: _width,
+                        child: Center(child: Text("Services Not Available Currently", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 16),)),
+                      ),
                     ),
                     Align(
                       alignment: Alignment.center,
@@ -232,11 +257,11 @@ class _SelectServiceState extends State<SelectService> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
-                          padding: const EdgeInsets.all(20),
+                          padding: EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 15.0.h),
                           textColor: Font_Style.secondaryColor,
                           color: Font_Style.middleColor,
                           onPressed: () {
-                            if (_selectedServicesList.length > 0)
+                            if (_selectedServicesList.length > 0 && _noOfTimeCards > 0)
                               Navigator.pushNamed(context, "/summary", arguments: Summary(dateSelected: _selectedDateValueService, timeSelected: _selectedTime,),);
                             else
                               showSnackBar(context);
@@ -392,7 +417,7 @@ class _SelectServiceState extends State<SelectService> {
             children: <Widget>[
               Icon(Icons.info_outline, color: Colors.red,),
               SizedBox(width: 12.0.w,),
-              Text("Please select atleast 1 service to continue", style: Font_Style().montserrat_SemiBold(Font_Style.primaryColor, 16),),
+              Flexible(child: Text("${_isServiceAvailable ? "Please select at least 1 service to continue" : "Services are not available currently"}", style: Font_Style().montserrat_medium(Font_Style.primaryColor, 14),)),
             ],
           ),
         ),
