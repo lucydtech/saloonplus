@@ -40,7 +40,7 @@ class _SelectServiceState extends State<SelectService> {
 
     _calculateService();
 
-    _selectedTime = _calculatedStartTime.add(Duration(minutes: 15));
+    _selectedTime = _calculatedStartTime;
 
     //_datePickerControllerService.animateToDate(_selectedDateValueService, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
 
