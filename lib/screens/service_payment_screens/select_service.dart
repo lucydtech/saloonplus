@@ -21,6 +21,7 @@ class _SelectServiceState extends State<SelectService> {
       _nowTime,
       _startTime,
       _endTime,
+      _calculatedStartTime,
       _selectedTime;
   int _noOfTimeCards = 0, _selectedTimeIndex = 0;
   double _height, _width;
@@ -32,39 +33,61 @@ class _SelectServiceState extends State<SelectService> {
     _selectedDateValueService = widget.inputDate;
     _nowTime = DateTime.now();
     _startTime = DateTime(_nowTime.year, _nowTime.month, _nowTime.day, 9, 0);
-    _endTime = DateTime(_nowTime.year, _nowTime.month, _nowTime.day, 20, 0);
+    _calculatedStartTime = _startTime;
+    _endTime = DateTime(_nowTime.year, _nowTime.month, _nowTime.day, 10, 30);
 
-    _calculateStartTimeNoOfCards();
+    _calculateStartTime();
 
     _calculateService();
 
-    _selectedTime = _startTime.add(Duration(minutes: 15));
+    _selectedTime = _calculatedStartTime.add(Duration(minutes: 15));
 
     //_datePickerControllerService.animateToDate(_selectedDateValueService, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
 
     super.initState();
   }
 
-  void _calculateStartTimeNoOfCards() {
-    if (_nowTime.hour > _startTime.hour && _nowTime.hour < _endTime.hour && _selectedDateValueService.day == _nowTime.day) {
-      _startTime = _nowTime;
-    }
-    if (_startTime.minute >= 0 && _startTime.minute < 15) {
-      _startTime = DateTime(
-          _startTime.year, _startTime.month, _startTime.day, _startTime.hour, 0);
-    } else {
-      _startTime = DateTime(_startTime.year, _startTime.month, _startTime.day,
-          _startTime.hour, (_startTime.minute / 15).floor() * 15);
-    }
-    _noOfTimeCards = ((_endTime.difference(_startTime).inMinutes - 15) / 15).floor();
+  void _calculateStartTime() {
+    setState(() {
+      if (_nowTime.isAfter(_calculatedStartTime) && _nowTime.isBefore(_endTime) && _selectedDateValueService.day == _nowTime.day) {
+        _calculatedStartTime = _nowTime;
+      }
+      else {
+        _calculatedStartTime = _startTime;
+      }
+      if (_calculatedStartTime.minute >= 0 && _calculatedStartTime.minute < 15) {
+        _calculatedStartTime = DateTime(
+            _calculatedStartTime.year, _calculatedStartTime.month, _calculatedStartTime.day, _calculatedStartTime.hour, 0);
+      } else {
+        _calculatedStartTime = DateTime(_calculatedStartTime.year, _calculatedStartTime.month, _calculatedStartTime.day,
+            _calculatedStartTime.hour, (_calculatedStartTime.minute / 15).ceil() * 15);
+      }
+    });
+    print(_calculatedStartTime);
+    _calculateNoOfCards();
+  }
+
+  void _calculateNoOfCards() {
+    setState(() {
+      _noOfTimeCards = ((_endTime.difference(_calculatedStartTime).inMinutes) / 15).floor();
+    });
+    print(_endTime.difference(_calculatedStartTime).inMinutes);
+    print((_endTime.difference(_calculatedStartTime).inMinutes) / 15);
+    print(_noOfTimeCards);
   }
 
   void _calculateService() {
-    if(_selectedDateValueService.day == _nowTime.day && _nowTime.hour >= _endTime.hour && _nowTime.hour <= 23 || _noOfTimeCards <= 0 || _noOfTimeCards == null) {
+    if(_selectedDateValueService.day == _nowTime.day && _nowTime.isAfter(_endTime) || _noOfTimeCards <= 0 || _noOfTimeCards == null) {
       setState(() {
         _isServiceAvailable = false;
       });
     }
+    else {
+      setState(() {
+        _isServiceAvailable = true;
+      });
+    }
+    print(_isServiceAvailable);
   }
 
   @override
@@ -212,10 +235,11 @@ class _SelectServiceState extends State<SelectService> {
                           DateTime.now().add(Duration(days: 7))
                         ],
                         onDateChange: (date) {
-                          _calculateService();
-
                           setState(() {
+                            _nowTime = DateTime.now();
                             _selectedDateValueService = date;
+                            _calculateStartTime();
+                            _calculateService();
                           });
                         },
                       ),
@@ -285,11 +309,11 @@ class _SelectServiceState extends State<SelectService> {
   }
 
   Widget _timePicker(int index) {
-    DateTime displayTime = _startTime.add(Duration(minutes: 15 * (index + 1)));
+    DateTime displayTime = _calculatedStartTime.add(Duration(minutes: 15 * (index)));
     return InkWell(
       onTap: () {
         setState(() {
-          _selectedTime = _startTime.add(Duration(minutes: 15 * (index + 1)));
+          _selectedTime = _calculatedStartTime.add(Duration(minutes: 15 * (index)));
           _selectedTimeIndex = index;
         });
         print(_selectedTime);
