@@ -269,7 +269,14 @@ class _SelectServiceState extends State<SelectService> {
                           })
                           : Container(
                         width: _width,
-                        child: Center(child: Text("Services Not Available Currently", style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 16),)),
+                        child: Center(child: Row(
+                          children: <Widget>[
+                            Icon(Icons.info_outline, color: Colors.red, size: 24.0,),
+                            SizedBox(width: 8.0.w,),
+                            Flexible(child: Text("Currently, services are not available on the selected date.", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.clip, style: Font_Style().montserrat_medium(Font_Style.secondaryColor, 14),))
+                          ],
+                        )
+                        ),
                       ),
                     ),
                     Align(
@@ -285,7 +292,7 @@ class _SelectServiceState extends State<SelectService> {
                           textColor: Font_Style.secondaryColor,
                           color: Font_Style.middleColor,
                           onPressed: () {
-                            if (_selectedServicesList.length > 0 && _noOfTimeCards > 0)
+                            if (_selectedServicesList.length > 0 && _isServiceAvailable)
                               Navigator.pushNamed(context, "/summary", arguments: Summary(dateSelected: _selectedDateValueService, timeSelected: _selectedTime,),);
                             else
                               showSnackBar(context);
@@ -435,13 +442,13 @@ class _SelectServiceState extends State<SelectService> {
       backgroundColor: Font_Style.secondaryColor,
       content: GestureDetector(
         child: Container(
-          height: 27.0.h,
+          height: 37.0.h,
           width: 390.0.w,
           child: Row(
             children: <Widget>[
               Icon(Icons.info_outline, color: Colors.red,),
-              SizedBox(width: 12.0.w,),
-              Flexible(child: Text("${_isServiceAvailable ? "Please select at least 1 service to continue" : "Services are not available currently"}", style: Font_Style().montserrat_medium(Font_Style.primaryColor, 14),)),
+              SizedBox(width: 8.0.w,),
+              Flexible(child: Text("${_isServiceAvailable ? "Please select at least 1 service to continue." : "Currently, services are not available on the selected date."}", textDirection: TextDirection.ltr, textAlign: TextAlign.left, style: Font_Style().montserrat_medium(Font_Style.primaryColor, 14),)),
             ],
           ),
         ),
