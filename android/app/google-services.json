@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "251494502579",
+    "project_id": "saloon-plus",
+    "storage_bucket": "saloon-plus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251494502579:android:4ece00b2b9ca7a05da60c6",
+        "android_client_info": {
+          "package_name": "com.example.saloon_plus_barber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251494502579-finug9rp4b1lhnfsebsi7ulv7p52dcom.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.saloon_plus_barber",
+            "certificate_hash": "db60dce7023778ce9686a1259c2cb5fd7dc300bc"
+          }
+        },
+        {
+          "client_id": "251494502579-3a5qsr22k14fbnqt5fs99ctdfh7q3pr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOEM_aiws2GCsvrxLYrFABrtacxUT3hWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251494502579-3a5qsr22k14fbnqt5fs99ctdfh7q3pr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
