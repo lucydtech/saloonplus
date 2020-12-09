@@ -16,6 +16,11 @@ class SelectService extends StatefulWidget {
 }
 
 class _SelectServiceState extends State<SelectService> {
+  Map<String, bool> values = {
+    'foo': true,
+    'bar': false,
+  };
+
   DatePickerController _datePickerControllerService = DatePickerController();
   DateTime _selectedDateValueService,
       _nowTime,

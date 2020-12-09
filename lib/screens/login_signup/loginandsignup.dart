@@ -247,50 +247,6 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
               style:  Font_Style().textfield_style(),
             ),
             Spacer(flex: 3,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Are you a Barber?", style: Font_Style().montserrat_SemiBold(Colors.white, 14),),
-                Spacer(flex: 2,),
-                InkWell(
-                  onTap: () {
-                    if(_isBarber) {
-                      setState(() {
-                        _isBarber = !_isBarber;
-                      });
-                    }
-                  },
-                  child: Container(
-                    height: 22.0.h,
-                    width: 55.0.w,
-                    padding: EdgeInsets.all(2.0.h),
-                    decoration: !_isBarber ? BoxDecoration(
-                        color: Font_Style.secondaryColor, borderRadius: BorderRadius.circular(30)) : null,
-                    child: Center(child: Text("NO", style: Font_Style().montserrat_Bold(!_isBarber ? Font_Style.primaryColor : Colors.white, 14),)),
-                  ),
-                ),
-                Spacer(flex: 1,),
-                InkWell(
-                  onTap: () {
-                    if(!_isBarber) {
-                      setState(() {
-                        _isBarber = !_isBarber;
-                      });
-                    }
-                  },
-                  child: Container(
-                    height: 22.0.h,
-                    width: 55.0.w,
-                    padding: EdgeInsets.all(2.0.h),
-                    decoration: _isBarber ? BoxDecoration(
-                        color: Font_Style.secondaryColor, borderRadius: BorderRadius.circular(30)) : null,
-                    child: Center(child: Text("YES", style: Font_Style().montserrat_Bold(_isBarber ? Font_Style.primaryColor : Colors.white, 14),)),
-                  ),
-                ),
-                Spacer(flex: 6,),
-              ],
-            ),
-            Spacer(flex: 4,),
             _buttonWidget(context, "SIGN UP"),
             Spacer(flex: 4,),
           ],

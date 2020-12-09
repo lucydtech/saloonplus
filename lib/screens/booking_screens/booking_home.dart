@@ -39,29 +39,29 @@ class _BookingHomeState extends State<BookingHome> with SingleTickerProviderStat
           color: Font_Style.primaryColor,
           child: Column(
             children: <Widget>[
-              Container(
-                height: 55.0.h,
-                padding: EdgeInsets.only(top: 5.0.h),
-                child: Center(
-                  child: TabBar(
-                    indicatorColor: Font_Style.secondaryColor,
-                    indicatorPadding: EdgeInsets.symmetric(horizontal: 18.0.w),
-                    controller: _bookingTabController,
-                    onTap: (int x) {
-                      _bookingTabController.index = x;
-                    },
-                    labelPadding: EdgeInsets.only(bottom: 7.0.h,),
-                    unselectedLabelColor: Font_Style.secondaryColor.withOpacity(0.7),
-                    labelColor: Font_Style.secondaryColor,
-                    labelStyle: Font_Style().montserrat_Bold(Font_Style.secondaryColor, 18),
-                    unselectedLabelStyle: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 18),
-                    tabs: <Widget>[
-                      Text("UPCOMING", textAlign: TextAlign.center, textDirection: TextDirection.ltr, overflow: TextOverflow.visible,),
-                      Text("PAST", textAlign: TextAlign.center, textDirection: TextDirection.ltr, overflow: TextOverflow.visible,),
-                    ],
+                Container(
+                  height: 55.0.h,
+                  padding: EdgeInsets.only(top: 5.0.h),
+                  child: Center(
+                    child: TabBar(
+                      indicatorColor: Font_Style.secondaryColor,
+                      indicatorPadding: EdgeInsets.symmetric(horizontal: 18.0.w),
+                      controller: _bookingTabController,
+                      onTap: (int x) {
+                        _bookingTabController.index = x;
+                      },
+                      labelPadding: EdgeInsets.only(bottom: 7.0.h,),
+                      unselectedLabelColor: Font_Style.secondaryColor.withOpacity(0.7),
+                      labelColor: Font_Style.secondaryColor,
+                      labelStyle: Font_Style().montserrat_Bold(Font_Style.secondaryColor, 18),
+                      unselectedLabelStyle: Font_Style().montserrat_SemiBold(Font_Style.secondaryColor, 18),
+                      tabs: <Widget>[
+                        Text("UPCOMING", textAlign: TextAlign.center, textDirection: TextDirection.ltr, overflow: TextOverflow.visible,),
+                        Text("PAST", textAlign: TextAlign.center, textDirection: TextDirection.ltr, overflow: TextOverflow.visible,),
+                      ],
+                    ),
                   ),
                 ),
-              ),
               Expanded(
                 child: Container(
                   padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w,),
