@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Font_Style {
-  static Color primaryColor=Color.fromRGBO(1,22,30, 1);
-  static Color secondaryColor=Color.fromRGBO(199,232,243, 1);
+  static Color primaryColor = Color.fromRGBO(1, 22, 30, 1);
+  static Color secondaryColor = Color.fromRGBO(241, 216, 106, 1);//(251,217,137,1);//(137, 207, 230, 1);//(199,232,243, 1);
   static Color secondaryColorWithOpacity = secondaryColor.withOpacity(0.5);
   static Color middleColor = Color.fromRGBO(3, 72, 99, 1);
   static Color dividerColor = Color.fromRGBO(2, 43, 60, 1);
@@ -35,94 +35,143 @@ class Font_Style {
         borderSide: BorderSide(color: Font_Style.secondaryColorWithOpacity, width: 1.5),
       ),
         contentPadding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 10.0.w),
-        labelStyle: montserrat_medium(secondaryColor, 12.0),
+        labelStyle: productsans_medium(secondaryColor, 12.0),
+      suffixIcon: sufix,
+    );
+  }
+  static InputDecoration setLableUnderline(var lable,var sufix,BuildContext context){
+    return InputDecoration(
+      //isDense: true,
+      labelText:lable,
+      counterText: "",
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5,),
+      ),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5),
+      ),
+      disabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5),
+      ),
+      errorBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.red, width: 1.5),
+      ),
+      focusedErrorBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.red, width: 1.5),
+      ),
+      border: UnderlineInputBorder(
+        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5),
+      ),
+      contentPadding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 10.0.w),
+      labelStyle: productsans_medium(primaryColor, 14.0),
+      alignLabelWithHint: true,
       suffixIcon: sufix,
     );
   }
   static TextStyle textfield_style(){
-    return montserrat_medium(secondaryColor, null);
+    return productsans_medium(secondaryColor, null);
   }
-  static TextStyle montserrat_black(Color primary,double f1_32){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_black(Color primary,double f1_32){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w800,
       color: primary==null?primaryColor:primary,
       fontSize: f1_32==null?ScreenUtil().setSp( 32.0,allowFontScalingSelf: true):ScreenUtil().setSp(f1_32,allowFontScalingSelf: true),
     );
   }
 
-  static TextStyle montserrat_ExtraBold(Color primary,double f3_20){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_ExtraBold(Color primary,double f3_20){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w900,
       color: primary==null?primaryColor:primary,
       fontSize: f3_20==null?ScreenUtil().setSp(19,allowFontScalingSelf: true):ScreenUtil().setSp(f3_20,allowFontScalingSelf: true),
     );
   }
 
-  static TextStyle montserrat_Bold(Color primary,double f3_19){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_Bold(Color primary,double f3_19){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w700,
       color: primary==null?primaryColor:primary,
       fontSize: f3_19==null?ScreenUtil().setSp(19,allowFontScalingSelf: true):ScreenUtil().setSp(f3_19,allowFontScalingSelf: true),
     );
   }
-  static TextStyle montserrat_SemiBold(Color primary,double f5_14){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_Bold_Underline(Color primary,double f3_19){
+    return TextStyle(
+      fontFamily: "ProductSans",
+      fontWeight: FontWeight.w700,
+      color: primary==null?primaryColor:primary,
+      decoration: TextDecoration.underline,
+      fontSize: f3_19==null?ScreenUtil().setSp(19,allowFontScalingSelf: true):ScreenUtil().setSp(f3_19,allowFontScalingSelf: true),
+    );
+  }
+  static TextStyle productsans_SemiBold(Color primary,double f5_14){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w600,
       color: primary==null?primaryColor:primary,
       fontSize: f5_14==null?ScreenUtil().setSp(14,allowFontScalingSelf: true):ScreenUtil().setSp(f5_14,allowFontScalingSelf: true),
     );
   }
-  static TextStyle montserrat_SemiBold_underline(Color primary,double f5_14){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_SemiBold_underline(Color primary,double f5_14){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w600,
       color: primary==null?primaryColor:primary,
       decoration: TextDecoration.underline,
       fontSize: f5_14==null?ScreenUtil().setSp(14,allowFontScalingSelf: true):ScreenUtil().setSp(f5_14,allowFontScalingSelf: true),
     );
   }
-  static TextStyle montserrat_medium(Color primary,double f4_16){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_medium(Color primary,double f4_16){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w400,
       color: primary==null?primaryColor:primary,
       fontSize: f4_16==null?ScreenUtil().setSp(16,allowFontScalingSelf: true):ScreenUtil().setSp(f4_16,allowFontScalingSelf: true),
     );
   }
-  static TextStyle montserrat_Regular(Color primary,double f6_12){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_Regular(Color primary,double f6_12){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w300,
       color: primary==null?primaryColor:primary,
       fontSize: f6_12==null?ScreenUtil().setSp(12,allowFontScalingSelf: true):ScreenUtil().setSp(f6_12,allowFontScalingSelf: true),
     );
   }
 
-  static TextStyle montserrat_Regular_Underline(Color primary,double f6_12){
-    return GoogleFonts.montserrat(
-        fontWeight: FontWeight.w300,
-        color: primary==null?primaryColor:primary,
-        fontSize: f6_12==null?ScreenUtil().setSp(12,allowFontScalingSelf: true):ScreenUtil().setSp(f6_12,allowFontScalingSelf: true),
-        decoration: TextDecoration.underline,
-        decorationColor: primary==null?primaryColor:primary,
+  static TextStyle productsans_Regular_Underline(Color primary,double f6_12){
+    return TextStyle(
+      fontFamily: "ProductSans",
+      fontWeight: FontWeight.w300,
+      color: primary==null?primaryColor:primary,
+      fontSize: f6_12==null?ScreenUtil().setSp(12,allowFontScalingSelf: true):ScreenUtil().setSp(f6_12,allowFontScalingSelf: true),
+      decoration: TextDecoration.underline,
+      decorationColor: primary==null?primaryColor:primary,
     );
   }
 
-  static TextStyle montserrat_Light(Color primary, double f6_12) {
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_Light(Color primary, double f6_12) {
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w300,
       color: primary==null?primaryColor:primary,
       fontSize: f6_12==null?ScreenUtil().setSp(12,allowFontScalingSelf: true):ScreenUtil().setSp(f6_12,allowFontScalingSelf: true),
     );
   }
 
-  static TextStyle montserrat_thin(Color primary,double f7_14){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_thin(Color primary,double f7_14){
+    return TextStyle(
+      fontFamily: "ProductSans",
       fontWeight: FontWeight.w300,
       color: primary==null?primaryColor:primary,
       fontSize: f7_14==null?ScreenUtil().setSp(14,allowFontScalingSelf: true):ScreenUtil().setSp(f7_14,allowFontScalingSelf: true),
     );
   }
 
-  static TextStyle montserrat_thin_Underline(Color primary,double f7_14){
-    return GoogleFonts.montserrat(
+  static TextStyle productsans_thin_Underline(Color primary,double f7_14){
+    return TextStyle(
+        fontFamily: "ProductSans",
         fontWeight: FontWeight.w300,
         color: primary==null?primaryColor:primary,
         fontSize: f7_14==null?ScreenUtil().setSp(14,allowFontScalingSelf: true):ScreenUtil().setSp(f7_14,allowFontScalingSelf: true),

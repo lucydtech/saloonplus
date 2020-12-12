@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
+import 'package:saloon_plus_barber/screens/components/bottom_nav.dart';
 
 class LoginSignUp extends StatefulWidget {
   @override
@@ -13,7 +14,6 @@ class LoginSignUp extends StatefulWidget {
 bool _isLoginObscurePressed = true;
 bool _isSignUpObscurePwdPressed = true;
 bool _isSignUpObscureCnfPwdPressed = true;
-bool _isBarber = false;
 
 class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStateMixin {
   TabController _tabController;
@@ -59,8 +59,8 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
                     },
                     labelPadding: EdgeInsets.only(bottom: 10.5.h,left: 0,right: 0),
                     labelColor: Font_Style.secondaryColor,
-                    labelStyle: Font_Style.montserrat_SemiBold(null, 16.0),
-                    unselectedLabelStyle:Font_Style.montserrat_Regular(Font_Style.secondaryColor.withOpacity(1), 16.0),
+                    labelStyle: Font_Style.productsans_SemiBold(null, 16.0),
+                    unselectedLabelStyle:Font_Style.productsans_Regular(Font_Style.secondaryColor.withOpacity(1), 16.0),
                     tabs: <Widget>[
                       Text("LOG IN"),
                       Text("SIGN UP"),
@@ -97,7 +97,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
               controller: loginEmailController,
               maxLength: 35,
               decoration:
-              Font_Style.setLable("Email Address", Icon(Icons.check, size: 15, color: Font_Style.secondaryColor,), context),
+              Font_Style.setLable("Email Address", Icon(Icons.mail, size: 22, color: Font_Style.secondaryColor,), context),
               keyboardType: TextInputType.emailAddress,
               cursorColor: Font_Style.secondaryColor,
               style:  Font_Style.textfield_style(),
@@ -118,7 +118,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
                           _isLoginObscurePressed = !_isLoginObscurePressed;
                         });
                       },
-                      child: Icon(_isLoginObscurePressed ? Icons.visibility_off : Icons.visibility, size: 18, color: Font_Style.secondaryColor,)),context),
+                      child: Icon(_isLoginObscurePressed ? Icons.visibility_off : Icons.visibility, size: 22, color: Font_Style.secondaryColor,)),context),
               cursorColor: Font_Style.secondaryColor,
               obscureText: _isLoginObscurePressed,
               style:  Font_Style.textfield_style(),
@@ -132,7 +132,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
                   onTap: () {
 
                   },
-                    child: Text("Forgot Password?", style: Font_Style.montserrat_SemiBold(Font_Style.secondaryColor, 14),))
+                    child: Text("Forgot Password?", style: Font_Style.productsans_SemiBold_underline(Font_Style.secondaryColorWithOpacity, 14),))
             ),
             Spacer(flex: 8,),
           ],
@@ -198,7 +198,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
               controller: loginEmailController,
               maxLength: 35,
               decoration:
-              Font_Style.setLable("Email Address", Icon(Icons.check, size: 15, color: Font_Style.secondaryColor,), context),
+              Font_Style.setLable("Email Address", Icon(Icons.mail, size: 22, color: Font_Style.secondaryColor,), context),
               keyboardType: TextInputType.emailAddress,
               cursorColor: Font_Style.secondaryColor,
               style:  Font_Style.textfield_style(),
@@ -219,7 +219,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
                           _isSignUpObscurePwdPressed = !_isSignUpObscurePwdPressed;
                         });
                       },
-                      child: Icon(_isSignUpObscurePwdPressed ? Icons.visibility_off : Icons.visibility, size: 18, color: Font_Style.secondaryColor,)),context),
+                      child: Icon(_isSignUpObscurePwdPressed ? Icons.visibility_off : Icons.visibility, size: 22, color: Font_Style.secondaryColor,)),context),
               cursorColor: Font_Style.secondaryColor,
               obscureText: _isSignUpObscurePwdPressed,
               style:  Font_Style.textfield_style(),
@@ -240,7 +240,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
                           _isSignUpObscureCnfPwdPressed = !_isSignUpObscureCnfPwdPressed;
                         });
                       },
-                      child: Icon(_isSignUpObscureCnfPwdPressed ? Icons.visibility_off : Icons.visibility, size: 18, color: Font_Style.secondaryColor,)),context),
+                      child: Icon(_isSignUpObscureCnfPwdPressed ? Icons.visibility_off : Icons.visibility, size: 22, color: Font_Style.secondaryColor,)),context),
               cursorColor: Font_Style.secondaryColor,
               obscureText: _isSignUpObscureCnfPwdPressed,
               style:  Font_Style.textfield_style(),
@@ -260,18 +260,18 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
         onTap: (){
           if(btnTitle == "LOG IN") {
             if(loginFormKey.currentState.validate()) {
-              /*Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => BottomNav(currentindex: 1,)),
-              );*/
+              );
             }
           }
           else {
             if(signUpFormKey.currentState.validate()) {
-              /*Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => BottomNav(currentindex: 1,)),
-              );*/
+              );
             }
           }
         },
@@ -283,7 +283,7 @@ class _LoginSignUpState extends State<LoginSignUp> with SingleTickerProviderStat
           child: Center(
             child: Text(
                 btnTitle,
-                style: Font_Style.montserrat_Bold(Font_Style.primaryColor, 19)
+                style: Font_Style.productsans_Bold(Font_Style.primaryColor, 19)
             ),
           ),
         ),
