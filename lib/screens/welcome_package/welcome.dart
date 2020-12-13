@@ -32,7 +32,7 @@ class _WelcomeState extends State<Welcome> {
         child: Center(
           child: Container(
             padding: EdgeInsets.only(left: 10.0.w, right: 10.0.w, top: 10.0.h, bottom: 10.0.h),
-              child: Text("Saloon + Barber", style: Font_Style.productsans_Bold(Font_Style.secondaryColor, 22),)),
+              child: Text("Saloon+ Barber", style: Font_Style.productsans_Bold(Font_Style.secondaryColor, 22),)),
         ),
       ),
     );

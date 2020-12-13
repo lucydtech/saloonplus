@@ -44,6 +44,7 @@ Widget barberReviewsTav(BuildContext context) {
                     size: 1.0,
                     color: Font_Style.secondaryColor,
                   ),
+              onRatingUpdate: null,
             ),
             SizedBox(width: 2.0.w,),
             Text("(15)", style: Font_Style.productsans_SemiBold(
@@ -127,6 +128,7 @@ Widget _barberReviewsListItem(BuildContext context, double _height, double _widt
                               size: 1.0,
                               color: Font_Style.secondaryColor,
                             ),
+                        onRatingUpdate: null,
                       ),
                     ],
                   ),
@@ -156,6 +158,7 @@ void reviewsShowDialog(BuildContext context) {
         alignment: Alignment.center,
         child: Container(
           height: 300.0.h,
+          width: MediaQuery.of(context).size.width,
           child: Material(
             child: Column(
               children: <Widget>[
@@ -204,6 +207,7 @@ void reviewsShowDialog(BuildContext context) {
                                           size: 1.0,
                                           color: Font_Style.secondaryColor,
                                         ),
+                                    onRatingUpdate: null,
                                   ),
                                 ],
                               ),

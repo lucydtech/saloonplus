@@ -39,19 +39,19 @@ class Font_Style {
       suffixIcon: sufix,
     );
   }
-  static InputDecoration setLableUnderline(var lable,var sufix,BuildContext context){
+  static InputDecoration setLableUnderline(var lable,var sufix,BuildContext context, Color color){
     return InputDecoration(
       //isDense: true,
       labelText:lable,
       counterText: "",
       focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5,),
+        borderSide: BorderSide(color: color, width: 1.5,),
       ),
       enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5),
+        borderSide: BorderSide(color: color, width: 1.5),
       ),
       disabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5),
+        borderSide: BorderSide(color: color, width: 1.5),
       ),
       errorBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: Colors.red, width: 1.5),
@@ -60,11 +60,11 @@ class Font_Style {
         borderSide: BorderSide(color: Colors.red, width: 1.5),
       ),
       border: UnderlineInputBorder(
-        borderSide: BorderSide(color: Font_Style.primaryColor, width: 1.5),
+        borderSide: BorderSide(color: color, width: 1.5),
       ),
-      contentPadding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 10.0.w),
-      labelStyle: productsans_medium(primaryColor, 14.0),
-      alignLabelWithHint: true,
+      contentPadding: EdgeInsets.only(top: 12.0.h, bottom: 5.0.h),
+      labelStyle: productsans_medium(color, 14.0),
+      alignLabelWithHint: false,
       suffixIcon: sufix,
     );
   }

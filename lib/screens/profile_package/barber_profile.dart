@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
 import 'package:saloon_plus_barber/screens/profile_package/reviews.dart';
 import 'package:saloon_plus_barber/screens/profile_package/services.dart';
-import 'package:saloon_plus_barber/screens/profile_package/info.dart';
+import 'package:saloon_plus_barber/screens/profile_package/info_screens/info.dart';
 
 class BarberProfile extends StatefulWidget {
   @override

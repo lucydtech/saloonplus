@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:saloon_plus_barber/screens/components/bottom_nav.dart';
 import 'package:saloon_plus_barber/screens/login_signup/loginandsignup.dart';
+import 'package:saloon_plus_barber/screens/profile_package/info_screens/edit_info.dart';
 import 'package:saloon_plus_barber/screens/welcome_package/welcome.dart';
 import 'ThemeData/fontstyle.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => Welcome(),
         'login_signUp': (context) => LoginSignUp(),
         'bottom_nav': (context) => BottomNav(),
+        'edit_info': (context) => EditInfo(),
       },
       initialRoute: '/',
     );
