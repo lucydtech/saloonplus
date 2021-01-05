@@ -6,29 +6,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
 
 Widget barberReviewsTav(BuildContext context) {
-  var _height = MediaQuery
-      .of(context)
-      .size
-      .height;
-  var _width = MediaQuery
-      .of(context)
-      .size
-      .width;
+  var _height = MediaQuery.of(context).size.height;
+  var _width = MediaQuery.of(context).size.width;
 
   return Column(
     children: <Widget>[
       Container(
         height: _height / 15,
-        color: Font_Style.middleColor,
+        color: FontStyle.middleColor,
         padding: EdgeInsets.symmetric(vertical: 5.0.h, horizontal: 5.0.w),
         child: Row(
           children: <Widget>[
-            Text("Overall Rating", style: Font_Style.productsans_Bold(
-                Colors.white, 18),),
+            Text(
+              "Overall Rating",
+              style: FontStyle.productsansBold(Colors.white, 18),
+            ),
             Spacer(),
-            Text("3.5", style: Font_Style.productsans_SemiBold(
-                Colors.white, 14),),
-            SizedBox(width: 2.0.w,),
+            Text(
+              "3.5",
+              style: FontStyle.productsansSemiBold(Colors.white, 14),
+            ),
+            SizedBox(
+              width: 2.0.w,
+            ),
             RatingBar.builder(
               initialRating: 3.5,
               minRating: 0,
@@ -38,45 +38,50 @@ Widget barberReviewsTav(BuildContext context) {
               itemSize: 14.0,
               itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
               unratedColor: Colors.white,
-              itemBuilder: (context, _) =>
-                  Icon(
-                    Icons.star,
-                    size: 1.0,
-                    color: Font_Style.secondaryColor,
-                  ),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                size: 1.0,
+                color: FontStyle.secondaryColor,
+              ),
               onRatingUpdate: null,
             ),
-            SizedBox(width: 2.0.w,),
-            Text("(15)", style: Font_Style.productsans_SemiBold(
-                Colors.white, 14),),
+            SizedBox(
+              width: 2.0.w,
+            ),
+            Text(
+              "(15)",
+              style: FontStyle.productsansSemiBold(Colors.white, 14),
+            ),
           ],
         ),
       ),
-      Container(height: 7.0.h, color: Font_Style.dividerColor,),
+      Container(
+        height: 7.0.h,
+        color: FontStyle.dividerColor,
+      ),
       Expanded(
           child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: ListView.separated(
+            separatorBuilder: (context, index) => Container(
+                  height: 1.0.h,
+                  width: _width,
+                  color: FontStyle.dividerColor,
+                ),
+            physics: ScrollPhysics(),
+            shrinkWrap: true,
             scrollDirection: Axis.vertical,
-            child: ListView.separated(
-                separatorBuilder: (context, index) =>
-                    Container(
-                      height: 1.0.h,
-                      width: _width,
-                      color: Font_Style.dividerColor,
-                    ),
-                physics: ScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, i) {
-                  return _barberReviewsListItem(context, _height, _width, i);
-                },
-                itemCount: 20),
-          )
-      ),
+            itemBuilder: (context, i) {
+              return _barberReviewsListItem(context, _height, _width, i);
+            },
+            itemCount: 20),
+      )),
     ],
   );
 }
 
-Widget _barberReviewsListItem(BuildContext context, double _height, double _width, int index) {
+Widget _barberReviewsListItem(
+    BuildContext context, double _height, double _width, int index) {
   return InkWell(
     onTap: () {
       print(index);
@@ -85,7 +90,7 @@ Widget _barberReviewsListItem(BuildContext context, double _height, double _widt
     child: Container(
       height: _height / 9.0.h, //80.0.h
       width: _width,
-      color: Font_Style.middleColor,
+      color: FontStyle.middleColor,
       padding: EdgeInsets.symmetric(horizontal: 5.0.w, vertical: 5.0.h),
       child: Row(
         children: <Widget>[
@@ -96,11 +101,10 @@ Widget _barberReviewsListItem(BuildContext context, double _height, double _widt
                   shape: BoxShape.circle,
                   image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: AssetImage("assets/images/barber_shop.png")
-                  )
-              )
+                      image: AssetImage("assets/images/barber_shop.png")))),
+          SizedBox(
+            width: 12.0.w,
           ),
-          SizedBox(width: 12.0.w,),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 7.0.h),
@@ -111,8 +115,16 @@ Widget _barberReviewsListItem(BuildContext context, double _height, double _widt
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
-                        width: _width / 2.2,
-                          child: Text("Raju Raju Raju Raju Raju Raju", textDirection: TextDirection.ltr, textAlign: TextAlign.left, overflow: TextOverflow.clip, maxLines: 1, style: Font_Style.productsans_SemiBold(Colors.white, 16),)),
+                          width: _width / 2.2,
+                          child: Text(
+                            "Raju Raju Raju Raju Raju Raju",
+                            textDirection: TextDirection.ltr,
+                            textAlign: TextAlign.left,
+                            overflow: TextOverflow.clip,
+                            maxLines: 1,
+                            style:
+                                FontStyle.productsansSemiBold(Colors.white, 16),
+                          )),
                       RatingBar.builder(
                         initialRating: 4.2,
                         minRating: 0,
@@ -122,20 +134,35 @@ Widget _barberReviewsListItem(BuildContext context, double _height, double _widt
                         itemSize: 14.0,
                         itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
                         unratedColor: Colors.white,
-                        itemBuilder: (context, _) =>
-                            Icon(
-                              Icons.star,
-                              size: 1.0,
-                              color: Font_Style.secondaryColor,
-                            ),
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          size: 1.0,
+                          color: FontStyle.secondaryColor,
+                        ),
                         onRatingUpdate: null,
                       ),
                     ],
                   ),
-                  SizedBox(height: 5.0.h,),
-                  Text("15/10/2020", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style.productsans_medium(Colors.white70, 12),),
-                 Spacer(),
-                 Text("Satisfied with the service Satisfied with the serviceSatisfied with the serviceSatisfied with the serviceSatisfied with the serviceSatisfied with the service", textDirection: TextDirection.ltr, textAlign: TextAlign.left, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style.productsans_medium(Colors.white70, 14),)
+                  SizedBox(
+                    height: 5.0.h,
+                  ),
+                  Text(
+                    "15/10/2020",
+                    textAlign: TextAlign.left,
+                    textDirection: TextDirection.ltr,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: FontStyle.productsansMedium(Colors.white70, 12),
+                  ),
+                  Spacer(),
+                  Text(
+                    "Satisfied with the service Satisfied with the serviceSatisfied with the serviceSatisfied with the serviceSatisfied with the serviceSatisfied with the service",
+                    textDirection: TextDirection.ltr,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: FontStyle.productsansMedium(Colors.white70, 14),
+                  )
                 ],
               ),
             ),
@@ -164,7 +191,8 @@ void reviewsShowDialog(BuildContext context) {
               children: <Widget>[
                 Container(
                   height: 80.0.h,
-                  padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 7.0.w),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 7.0.w),
                   child: Row(
                     children: <Widget>[
                       Container(
@@ -174,11 +202,11 @@ void reviewsShowDialog(BuildContext context) {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: AssetImage("assets/images/barber_shop.png")
-                              )
-                          )
+                                  image: AssetImage(
+                                      "assets/images/barber_shop.png")))),
+                      SizedBox(
+                        width: 12.0.w,
                       ),
-                      SizedBox(width: 12.0.w,),
                       Expanded(
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 7.0.h),
@@ -187,12 +215,22 @@ void reviewsShowDialog(BuildContext context) {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Container(
-                                    width: MediaQuery.of(context).size.width / 2.5,
-                                      child: Text("Raju Raju Raju Raju Raju Raju", textDirection: TextDirection.ltr, textAlign: TextAlign.left, overflow: TextOverflow.clip, maxLines: 1, style: Font_Style.productsans_SemiBold(Font_Style.primaryColor, 18),)),
+                                      width: MediaQuery.of(context).size.width /
+                                          2.5,
+                                      child: Text(
+                                        "Raju Raju Raju Raju Raju Raju",
+                                        textDirection: TextDirection.ltr,
+                                        textAlign: TextAlign.left,
+                                        overflow: TextOverflow.clip,
+                                        maxLines: 1,
+                                        style: FontStyle.productsansSemiBold(
+                                            FontStyle.primaryColor, 18),
+                                      )),
                                   RatingBar.builder(
                                     initialRating: 4.2,
                                     minRating: 0,
@@ -200,19 +238,29 @@ void reviewsShowDialog(BuildContext context) {
                                     allowHalfRating: true,
                                     itemCount: 5,
                                     itemSize: 16.0,
-                                    itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                                    itemBuilder: (context, _) =>
-                                        Icon(
-                                          Icons.star,
-                                          size: 1.0,
-                                          color: Font_Style.secondaryColor,
-                                        ),
+                                    itemPadding:
+                                        EdgeInsets.symmetric(horizontal: 1.0),
+                                    itemBuilder: (context, _) => Icon(
+                                      Icons.star,
+                                      size: 1.0,
+                                      color: FontStyle.secondaryColor,
+                                    ),
                                     onRatingUpdate: null,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8.0.h,),
-                              Text("15/10/2020", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style.productsans_medium(Font_Style.primaryColor, 14),),
+                              SizedBox(
+                                height: 8.0.h,
+                              ),
+                              Text(
+                                "15/10/2020",
+                                textAlign: TextAlign.left,
+                                textDirection: TextDirection.ltr,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: FontStyle.productsansMedium(
+                                    FontStyle.primaryColor, 14),
+                              ),
                             ],
                           ),
                         ),
@@ -221,21 +269,28 @@ void reviewsShowDialog(BuildContext context) {
                   ),
                 ),
                 Divider(
-                  color: Font_Style.primaryColor,
+                  color: FontStyle.primaryColor,
                   thickness: 1.0,
                 ),
                 Expanded(
-                  child: SingleChildScrollView(child: Padding(
-                    padding: EdgeInsets.all(7.0.h),
-                      child: Text("very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review ", style: Font_Style.productsans_Regular(Font_Style.primaryColor, 16),))),
+                  child: SingleChildScrollView(
+                      child: Padding(
+                          padding: EdgeInsets.all(7.0.h),
+                          child: Text(
+                            "very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review very long review ",
+                            style: FontStyle.productsansRegular(
+                                FontStyle.primaryColor, 16),
+                          ))),
                 ),
                 RaisedButton(
-                  onPressed: () {Navigator.of(context).pop();},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                   textColor: Colors.white,
-                  color: Font_Style.middleColor,
+                  color: FontStyle.middleColor,
                   child: Text(
                     "OK",
-                    style: Font_Style.productsans_Bold(Colors.white, 12),
+                    style: FontStyle.productsansBold(Colors.white, 12),
                   ),
                 ),
               ],

@@ -17,7 +17,10 @@ class _WelcomeState extends State<Welcome> {
       //Navigator.pushNamed(context, "login_signUp");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => BottomNav(currentindex: 1,)),
+        MaterialPageRoute(
+            builder: (context) => BottomNav(
+                  currentIndex: 1,
+                )),
       );
     });
     super.initState();
@@ -27,12 +30,16 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 390, height: 812, allowFontScaling: true);
     return Scaffold(
-      backgroundColor: Font_Style.primaryColor,
+      backgroundColor: FontStyle.primaryColor,
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: EdgeInsets.only(left: 10.0.w, right: 10.0.w, top: 10.0.h, bottom: 10.0.h),
-              child: Text("Saloon+ Barber", style: Font_Style.productsans_Bold(Font_Style.secondaryColor, 22),)),
+              padding: EdgeInsets.only(
+                  left: 10.0.w, right: 10.0.w, top: 10.0.h, bottom: 10.0.h),
+              child: Text(
+                "Saloon+ Barber",
+                style: FontStyle.productsansBold(FontStyle.secondaryColor, 22),
+              )),
         ),
       ),
     );

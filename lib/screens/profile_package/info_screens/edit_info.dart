@@ -4,7 +4,6 @@ import 'package:geocoder/geocoder.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
 import 'package:saloon_plus_barber/locationData/LocationData.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:saloon_plus_barber/screens/profile_package/services.dart';
 
 class EditInfo extends StatefulWidget {
   @override
@@ -91,29 +90,29 @@ class _EditInfoState extends State<EditInfo> {
       isFri = false,
       isSat = false;
 
-
   FocusNode addressFocusNode = FocusNode(), contactFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
     _locationData = new LocationData();
-    _locationData.getStateList().then((value) => setState((){stateList = value;}));
+    _locationData.getStateList().then((value) => setState(() {
+          stateList = value;
+        }));
   }
 
   @override
   Widget build(BuildContext context) {
-
     final String fNArgs = ModalRoute.of(context).settings.arguments;
     print(fNArgs);
-    switch(fNArgs) {
-      case "a" :
+    switch (fNArgs) {
+      case "a":
         addressFocusNode.requestFocus();
         break;
-      case "c" :
+      case "c":
         contactFocusNode.requestFocus();
         break;
-      case "t" :
+      case "t":
         break;
       default:
         addressFocusNode.requestFocus();
@@ -122,10 +121,10 @@ class _EditInfoState extends State<EditInfo> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Font_Style.middleColor,
+        backgroundColor: FontStyle.middleColor,
         title: Text(
           "Edit Barber Info",
-          style: Font_Style.productsans_medium(Colors.white, 18),
+          style: FontStyle.productsansMedium(Colors.white, 18),
         ),
         leading: InkWell(
           onTap: () {
@@ -133,7 +132,7 @@ class _EditInfoState extends State<EditInfo> {
           },
           child: Icon(
             Icons.arrow_back,
-            color: Font_Style.secondaryColor,
+            color: FontStyle.secondaryColor,
           ),
         ),
         elevation: 0.0,
@@ -143,7 +142,10 @@ class _EditInfoState extends State<EditInfo> {
                   padding: EdgeInsets.symmetric(horizontal: 12.0.w),
                   child: InkWell(
                     onTap: () {
-                      if(profileUpdateFormKey.currentState.validate() && _state  != null && _district != null && _contactController.text.length == 10) {
+                      if (profileUpdateFormKey.currentState.validate() &&
+                          _state != null &&
+                          _district != null &&
+                          _contactController.text.length == 10) {
                         _getCoordinatesFromAddress();
                         Navigator.of(context).pop();
                       }
@@ -152,15 +154,15 @@ class _EditInfoState extends State<EditInfo> {
                       children: <Widget>[
                         Icon(
                           Icons.save,
-                          color: Font_Style.secondaryColor,
+                          color: FontStyle.secondaryColor,
                         ),
                         SizedBox(
                           width: 3.0.w,
                         ),
                         Text(
                           "save",
-                          style: Font_Style.productsans_medium(
-                              Font_Style.secondaryColor, 16),
+                          style: FontStyle.productsansMedium(
+                              FontStyle.secondaryColor, 16),
                         )
                       ],
                     ),
@@ -180,12 +182,12 @@ class _EditInfoState extends State<EditInfo> {
                 children: <Widget>[
                   Text(
                     "Address",
-                    style: Font_Style.productsans_Bold(Colors.white, 16),
+                    style: FontStyle.productsansBold(Colors.white, 16),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: Font_Style.middleColor,
+                      color: FontStyle.middleColor,
                       borderRadius: BorderRadius.circular(2),
                     ),
                     padding: EdgeInsets.only(
@@ -200,8 +202,8 @@ class _EditInfoState extends State<EditInfo> {
                           keyboardType: TextInputType.text,
                           cursorColor: Colors.white,
                           style:
-                              Font_Style.productsans_medium(Colors.white, null),
-                          decoration: Font_Style.setLableUnderline(
+                              FontStyle.productsansMedium(Colors.white, null),
+                          decoration: FontStyle.setLableUnderline(
                               "Address ine 1", null, context, Colors.white70),
                         ),
                         TextFormField(
@@ -215,8 +217,8 @@ class _EditInfoState extends State<EditInfo> {
                           keyboardType: TextInputType.text,
                           cursorColor: Colors.white,
                           style:
-                              Font_Style.productsans_medium(Colors.white, null),
-                          decoration: Font_Style.setLableUnderline(
+                              FontStyle.productsansMedium(Colors.white, null),
+                          decoration: FontStyle.setLableUnderline(
                               "Address Line 2", null, context, Colors.white70),
                         ),
                         profileDropDownEntry(
@@ -244,9 +246,8 @@ class _EditInfoState extends State<EditInfo> {
                               );
                             }).toList(),
                             _district,
-                            "Select District",
-                                (String newValue) {
-                              setState(() {
+                            "Select District", (String newValue) {
+                          setState(() {
                             _district = newValue;
                           });
                         }),
@@ -261,8 +262,8 @@ class _EditInfoState extends State<EditInfo> {
                           keyboardType: TextInputType.number,
                           cursorColor: Colors.white,
                           style:
-                              Font_Style.productsans_medium(Colors.white, null),
-                          decoration: Font_Style.setLableUnderline(
+                              FontStyle.productsansMedium(Colors.white, null),
+                          decoration: FontStyle.setLableUnderline(
                               "Postal Code", null, context, Colors.white70),
                         ),
                       ],
@@ -273,12 +274,12 @@ class _EditInfoState extends State<EditInfo> {
                   ),
                   Text(
                     "Contact",
-                    style: Font_Style.productsans_Bold(Colors.white, 16),
+                    style: FontStyle.productsansBold(Colors.white, 16),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: Font_Style.middleColor,
+                      color: FontStyle.middleColor,
                       borderRadius: BorderRadius.circular(2),
                     ),
                     padding: EdgeInsets.only(
@@ -289,8 +290,8 @@ class _EditInfoState extends State<EditInfo> {
                       maxLength: 10,
                       keyboardType: TextInputType.number,
                       cursorColor: Colors.white,
-                      style: Font_Style.productsans_medium(Colors.white, null),
-                      decoration: Font_Style.setLableUnderline(
+                      style: FontStyle.productsansMedium(Colors.white, null),
+                      decoration: FontStyle.setLableUnderline(
                           "Contact Number", null, context, Colors.white70),
                     ),
                   ),
@@ -299,12 +300,12 @@ class _EditInfoState extends State<EditInfo> {
                   ),
                   Text(
                     "Timings",
-                    style: Font_Style.productsans_Bold(Colors.white, 16),
+                    style: FontStyle.productsansBold(Colors.white, 16),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: Font_Style.middleColor,
+                      color: FontStyle.middleColor,
                       borderRadius: BorderRadius.circular(2),
                     ),
                     padding: EdgeInsets.only(
@@ -335,14 +336,14 @@ class _EditInfoState extends State<EditInfo> {
                   isSun || isMon || isTue || isWed || isThu || isFri || isSat
                       ? Text(
                           "Break Timings",
-                          style: Font_Style.productsans_Bold(Colors.white, 16),
+                          style: FontStyle.productsansBold(Colors.white, 16),
                         )
                       : Container(),
                   isSun || isMon || isTue || isWed || isThu || isFri || isSat
                       ? Container(
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                            color: Font_Style.middleColor,
+                            color: FontStyle.middleColor,
                             borderRadius: BorderRadius.circular(2),
                           ),
                           padding: EdgeInsets.only(
@@ -394,9 +395,10 @@ class _EditInfoState extends State<EditInfo> {
   }
 
   void _getCoordinatesFromAddress() async {
-    final query = "${_addLine1Controller.text} ${_addLine2Controller.text} ${_postalCodeController.text} ${_district.toString()} ${_state.toString()}";
+    final query =
+        "${_addLine1Controller.text} ${_addLine2Controller.text} ${_postalCodeController.text} ${_district.toString()} ${_state.toString()}";
     print(query);
-      //  "plot no. 22, house no: 6-522-110, New Bowenpally, Srinivas Nagar Colony, Seetharampuram, Hyderabad, Telangana";
+    //  "plot no. 22, house no: 6-522-110, New Bowenpally, Srinivas Nagar Colony, Seetharampuram, Hyderabad, Telangana";
     var addresses = await Geocoder.local.findAddressesFromQuery(query);
     var first = addresses.first;
     print("hhhhhhhhhhhhhhhhhhhh");
@@ -411,32 +413,30 @@ class _EditInfoState extends State<EditInfo> {
   Widget profileDropDownEntry(List<DropdownMenuItem<String>> items,
       String dropdownValue, String hint, Function(String) onChange) {
     return Theme(
-      data: new ThemeData(
-          canvasColor: Font_Style.primaryColor),
+      data: new ThemeData(canvasColor: FontStyle.primaryColor),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5.0.h),
         child: DropdownButtonFormField<String>(
           value: dropdownValue,
           hint: Text(
             hint,
-            style: Font_Style.productsans_medium(Colors.white70, 14),
+            style: FontStyle.productsansMedium(Colors.white70, 14),
           ),
           icon: Icon(
             Icons.arrow_drop_down,
-            color: Font_Style.secondaryColor,
+            color: FontStyle.secondaryColor,
             size: 24.0,
           ),
           iconSize: 24,
           elevation: 16,
-          style: Font_Style.productsans_medium(Colors.white, 14),
+          style: FontStyle.productsansMedium(Colors.white, 14),
           isExpanded: true,
           onChanged: onChange,
           items: items,
           decoration: InputDecoration(
-            hintText: "",
-    enabledBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.white70))
-          ),
+              hintText: "",
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white70))),
         ),
       ),
     );
@@ -450,7 +450,7 @@ class _EditInfoState extends State<EditInfo> {
         children: <Widget>[
           Switch(
             value: value,
-            activeColor: Font_Style.secondaryColor,
+            activeColor: FontStyle.secondaryColor,
             onChanged: (value) {
               setState(() {
                 fun();
@@ -459,7 +459,7 @@ class _EditInfoState extends State<EditInfo> {
           ),
           Text(
             day,
-            style: Font_Style.productsans_medium(
+            style: FontStyle.productsansMedium(
                 value ? Colors.white : Colors.white70, 14),
           ),
           Spacer(),
@@ -470,14 +470,14 @@ class _EditInfoState extends State<EditInfo> {
                   },
                   child: Text(
                     openDate.toString().substring(11, 16),
-                    style: Font_Style.productsans_medium(
-                        Font_Style.secondaryColor, 14),
+                    style: FontStyle.productsansMedium(
+                        FontStyle.secondaryColor, 14),
                   ))
               : Container(),
           value
               ? Text(
                   " - ",
-                  style: Font_Style.productsans_medium(Colors.white, 14),
+                  style: FontStyle.productsansMedium(Colors.white, 14),
                 )
               : Container(),
           value
@@ -487,8 +487,8 @@ class _EditInfoState extends State<EditInfo> {
                   },
                   child: Text(
                     closeDate.toString().substring(11, 16),
-                    style: Font_Style.productsans_medium(
-                        Font_Style.secondaryColor, 14),
+                    style: FontStyle.productsansMedium(
+                        FontStyle.secondaryColor, 14),
                   ))
               : Container(),
         ],
@@ -610,7 +610,7 @@ class _EditInfoState extends State<EditInfo> {
               children: <Widget>[
                 Text(
                   day,
-                  style: Font_Style.productsans_medium(
+                  style: FontStyle.productsansMedium(
                       value ? Colors.white : Colors.white70, 14),
                 ),
                 Spacer(),
@@ -620,12 +620,12 @@ class _EditInfoState extends State<EditInfo> {
                     },
                     child: Text(
                       openDate.toString().substring(11, 16),
-                      style: Font_Style.productsans_medium(
-                          Font_Style.secondaryColor, 14),
+                      style: FontStyle.productsansMedium(
+                          FontStyle.secondaryColor, 14),
                     )),
                 Text(
                   " - ",
-                  style: Font_Style.productsans_medium(Colors.white, 14),
+                  style: FontStyle.productsansMedium(Colors.white, 14),
                 ),
                 InkWell(
                     onTap: () {
@@ -633,8 +633,8 @@ class _EditInfoState extends State<EditInfo> {
                     },
                     child: Text(
                       closeDate.toString().substring(11, 16),
-                      style: Font_Style.productsans_medium(
-                          Font_Style.secondaryColor, 14),
+                      style: FontStyle.productsansMedium(
+                          FontStyle.secondaryColor, 14),
                     )),
               ],
             ),

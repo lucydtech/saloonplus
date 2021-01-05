@@ -39,10 +39,12 @@ class _BarberProfileState extends State<BarberProfile>
                 color: Colors.white.withOpacity(0.8),
                 height: _height / 4.0.h,
                 padding:
-                EdgeInsets.symmetric(vertical: 12.0.h, horizontal: 12.0.w),
+                    EdgeInsets.symmetric(vertical: 12.0.h, horizontal: 12.0.w),
                 child: Row(
                   children: <Widget>[
-                    SizedBox(width: 8.0.w,),
+                    SizedBox(
+                      width: 8.0.w,
+                    ),
                     Container(
                         width: _height / 6.0, //140.0.w
                         height: _height / 6.0, //140.0.h
@@ -50,18 +52,16 @@ class _BarberProfileState extends State<BarberProfile>
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 fit: BoxFit.fill,
-                                image: AssetImage("assets/images/barber_shop.png")
-                            )
-                        )
-                    ),
+                                image: AssetImage(
+                                    "assets/images/barber_shop.png")))),
                     SizedBox(
                       width: 18.0.w,
                     ),
                     Expanded(
                       child: Text(
                         "Barber Shop Name",
-                        style: Font_Style
-                            .productsans_Bold(Font_Style.middleColor, 22),
+                        style: FontStyle.productsansBold(
+                            FontStyle.middleColor, 22),
                       ),
                     ),
                   ],
@@ -72,22 +72,23 @@ class _BarberProfileState extends State<BarberProfile>
                 padding: EdgeInsets.only(top: 5.0.h),
                 child: Center(
                   child: TabBar(
-                    indicatorColor: Font_Style.secondaryColor,
+                    indicatorColor: FontStyle.secondaryColor,
                     //indicatorPadding: EdgeInsets.symmetric(horizontal: 18.0.w),
                     indicatorWeight: 0.5,
                     controller: _barberProfileTabController,
                     onTap: (int x) {
                       _barberProfileTabController.index = x;
                     },
-                    labelPadding:
-                        EdgeInsets.only(bottom: 7.0.h,),
+                    labelPadding: EdgeInsets.only(
+                      bottom: 7.0.h,
+                    ),
                     unselectedLabelColor:
-                        Font_Style.secondaryColor.withOpacity(0.7),
-                    labelColor: Font_Style.secondaryColor,
-                    labelStyle: Font_Style
-                        .productsans_Bold(Font_Style.secondaryColor, 16),
-                    unselectedLabelStyle: Font_Style
-                        .productsans_SemiBold(Font_Style.secondaryColor, 16),
+                        FontStyle.secondaryColor.withOpacity(0.7),
+                    labelColor: FontStyle.secondaryColor,
+                    labelStyle:
+                        FontStyle.productsansBold(FontStyle.secondaryColor, 16),
+                    unselectedLabelStyle: FontStyle.productsansSemiBold(
+                        FontStyle.secondaryColor, 16),
                     tabs: <Widget>[
                       Text(
                         "INFO",
@@ -113,7 +114,8 @@ class _BarberProfileState extends State<BarberProfile>
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, bottom: 5.0.h),
+                  padding:
+                      EdgeInsets.only(left: 5.0.w, right: 5.0.w, bottom: 5.0.h),
                   child: TabBarView(
                     controller: _barberProfileTabController,
                     children: <Widget>[

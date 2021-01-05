@@ -28,7 +28,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
     double _width = MediaQuery.of(context).size.width;
 
     return Container(
-      color: Font_Style.middleColor,
+      color: FontStyle.middleColor,
       width: _width,
       padding: EdgeInsets.symmetric(vertical: 5.0.h, horizontal: 7.0.w),
       child: SingleChildScrollView(
@@ -40,16 +40,20 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               children: <Widget>[
                 Text(
                   "Address",
-                  style: Font_Style.productsans_Bold(Colors.white, 16),
+                  style: FontStyle.productsansBold(Colors.white, 16),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("edit_info", arguments: "a");
-                  },
-                    child: Icon(Icons.edit, size: 22.0, color: Font_Style.secondaryColor,))
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed("edit_info", arguments: "a");
+                    },
+                    child: Icon(
+                      Icons.edit,
+                      size: 22.0,
+                      color: FontStyle.secondaryColor,
+                    ))
               ],
             ),
-
             SizedBox(
               height: 5.0.h,
             ),
@@ -59,10 +63,10 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style: Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Divider(
-              color: Font_Style.dividerColor,
+              color: FontStyle.dividerColor,
               thickness: 1.0.h,
               height: 25.0.h,
             ),
@@ -71,21 +75,29 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               children: <Widget>[
                 Text(
                   "Contact",
-                  style: Font_Style.productsans_Bold(Colors.white, 16),
+                  style: FontStyle.productsansBold(Colors.white, 16),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("edit_info", arguments: "c");
-                  },
-                    child: Icon(Icons.edit, size: 22.0, color: Font_Style.secondaryColor,)),
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed("edit_info", arguments: "c");
+                    },
+                    child: Icon(
+                      Icons.edit,
+                      size: 22.0,
+                      color: FontStyle.secondaryColor,
+                    )),
               ],
             ),
             SizedBox(
               height: 8.0.w,
             ),
-            Text("+91  9905648571", style: Font_Style.productsans_medium(Colors.white70, 14),),
+            Text(
+              "+91  9905648571",
+              style: FontStyle.productsansMedium(Colors.white70, 14),
+            ),
             Divider(
-              color: Font_Style.dividerColor,
+              color: FontStyle.dividerColor,
               thickness: 1.0.h,
               height: 25.0.h,
             ),
@@ -94,14 +106,18 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               children: <Widget>[
                 Text(
                   "Timings",
-                  style: Font_Style.productsans_Bold(
-                      Colors.white, 16),
+                  style: FontStyle.productsansBold(Colors.white, 16),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("edit_info", arguments: "t");
-                  },
-                    child: Icon(Icons.edit, size: 22.0, color: Font_Style.secondaryColor,))
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed("edit_info", arguments: "t");
+                    },
+                    child: Icon(
+                      Icons.edit,
+                      size: 22.0,
+                      color: FontStyle.secondaryColor,
+                    ))
               ],
             ),
             SizedBox(
@@ -113,8 +129,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style:
-                  Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Text(
               "Tuesday : 9 am - 12 pm, 2 pm - 6 pm",
@@ -122,8 +137,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style:
-              Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Text(
               "Wednesday : 9 am - 12 pm, 2 pm - 6 pm",
@@ -131,8 +145,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style:
-              Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Text(
               "Thursday : 9 am - 1 pm, 2 pm - 6 pm",
@@ -140,8 +153,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style:
-              Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Text(
               "Friday : 9 am - 12 pm, 2 pm - 6 pm",
@@ -149,8 +161,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style:
-              Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Text(
               "Saturday : 9 am - 12 pm, 2 pm - 6 pm",
@@ -158,8 +169,7 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style:
-              Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Text(
               "Sunday : 9 am - 12 pm, 2 pm - 6 pm",
@@ -167,17 +177,16 @@ class _BarberInfoTabState extends State<BarberInfoTab> {
               maxLines: 3,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.left,
-              style:
-              Font_Style.productsans_medium(Colors.white70, 14),
+              style: FontStyle.productsansMedium(Colors.white70, 14),
             ),
             Divider(
-              color: Font_Style.dividerColor,
+              color: FontStyle.dividerColor,
               thickness: 1.0.h,
               height: 25.0.h,
             ),
             Text(
               "Address on Map",
-              style: Font_Style.productsans_Bold(Colors.white, 16),
+              style: FontStyle.productsansBold(Colors.white, 16),
             ),
             SizedBox(
               height: 8.0.h,

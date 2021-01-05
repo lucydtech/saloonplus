@@ -13,7 +13,6 @@ TextEditingController _descController = new TextEditingController();
 final serviceUpdateFormKey = GlobalKey<FormState>();
 
 Widget barberServicesTab(BuildContext context) {
-
   var _height = MediaQuery.of(context).size.height;
   var _width = MediaQuery.of(context).size.width;
 
@@ -22,16 +21,20 @@ Widget barberServicesTab(BuildContext context) {
       onPressed: () {
         servicesShowDialog(context);
       },
-      child: Icon(Icons.add, size: 24.0, color: Font_Style.primaryColor,),
-      backgroundColor: Font_Style.secondaryColor,
+      child: Icon(
+        Icons.add,
+        size: 24.0,
+        color: FontStyle.primaryColor,
+      ),
+      backgroundColor: FontStyle.secondaryColor,
     ),
     body: SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: ListView.separated(
           separatorBuilder: (context, index) => Divider(
-            color: Font_Style.dividerColor,
-            height: 1.0.h,
-          ),
+                color: FontStyle.dividerColor,
+                height: 1.0.h,
+              ),
           physics: ScrollPhysics(),
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
@@ -43,7 +46,8 @@ Widget barberServicesTab(BuildContext context) {
   );
 }
 
-Widget _barberServicesListItem(BuildContext context, double _height, double _width) {
+Widget _barberServicesListItem(
+    BuildContext context, double _height, double _width) {
   return InkWell(
     onTap: () {
       servicesShowDialog(context);
@@ -51,8 +55,9 @@ Widget _barberServicesListItem(BuildContext context, double _height, double _wid
     child: Container(
       width: _width,
       height: _height / 8.5,
-      color: Font_Style.middleColor,
-      padding: EdgeInsets.only(left: 8.0.w, right: 8.0.w, top: 5.0.h, bottom: 8.0.h),
+      color: FontStyle.middleColor,
+      padding:
+          EdgeInsets.only(left: 8.0.w, right: 8.0.w, top: 5.0.h, bottom: 8.0.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -60,13 +65,37 @@ Widget _barberServicesListItem(BuildContext context, double _height, double _wid
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Hair Cut", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style.productsans_Bold(Colors.white, 18),),
-              Text("₹ 100", style: Font_Style.productsans_SemiBold(Colors.white, 16),),
+              Text(
+                "Hair Cut",
+                textAlign: TextAlign.left,
+                textDirection: TextDirection.ltr,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: FontStyle.productsansBold(Colors.white, 18),
+              ),
+              Text(
+                "₹ 100",
+                style: FontStyle.productsansSemiBold(Colors.white, 16),
+              ),
             ],
           ),
-          Text("0 hrs 40 min", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style.productsans_medium(Colors.white70, 14),),
+          Text(
+            "0 hrs 40 min",
+            textAlign: TextAlign.left,
+            textDirection: TextDirection.ltr,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: FontStyle.productsansMedium(Colors.white70, 14),
+          ),
           SizedBox(height: 8.0.h),
-          Text("Soo much description that you can't measure it. Very large description. You probably can't read this description, so just don't waste your time please.", textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, maxLines: 1, style: Font_Style.productsans_medium(Colors.white70, 14),)
+          Text(
+            "Soo much description that you can't measure it. Very large description. You probably can't read this description, so just don't waste your time please.",
+            textAlign: TextAlign.left,
+            textDirection: TextDirection.ltr,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: FontStyle.productsansMedium(Colors.white70, 14),
+          )
         ],
       ),
     ),
@@ -93,35 +122,42 @@ void servicesShowDialog(BuildContext context) {
                 child: Column(
                   children: <Widget>[
                     TextFormField(
-                      validator: (val){
-                        return val.length > 2 ?
-                        null : "Service name is too short";
+                      validator: (val) {
+                        return val.length > 2
+                            ? null
+                            : "Service name is too short";
                       },
                       controller: _nameController,
                       maxLength: 25,
                       keyboardType: TextInputType.text,
-                      cursorColor: Font_Style.primaryColor,
-                      style:  Font_Style.productsans_medium(Font_Style.primaryColor, null),
-                      decoration: Font_Style.setLableUnderline("Service Name", null, context, Font_Style.primaryColor),
+                      cursorColor: FontStyle.primaryColor,
+                      style: FontStyle.productsansMedium(
+                          FontStyle.primaryColor, null),
+                      decoration: FontStyle.setLableUnderline("Service Name",
+                          null, context, FontStyle.primaryColor),
                     ),
                     TextFormField(
-                      validator: (val){
-                        return val.length != 0  ?
-                        null : "Invalid price";
+                      validator: (val) {
+                        return val.length != 0 ? null : "Invalid price";
                       },
                       controller: _priceController,
                       maxLength: 5,
                       keyboardType: TextInputType.number,
-                      cursorColor: Font_Style.primaryColor,
-                      style:  Font_Style.productsans_medium(Font_Style.primaryColor, null),
-                      decoration: Font_Style.setLableUnderline("Price", null, context, Font_Style.primaryColor),
+                      cursorColor: FontStyle.primaryColor,
+                      style: FontStyle.productsansMedium(
+                          FontStyle.primaryColor, null),
+                      decoration: FontStyle.setLableUnderline(
+                          "Price", null, context, FontStyle.primaryColor),
                     ),
                     InkWell(
                       onTap: () {
-                        DatePicker.showTimePicker(context, showTitleActions: true, onChanged: (date) {
-                          print('change $date in time zone ' + date.timeZoneOffset.inHours.toString());
+                        DatePicker.showTimePicker(context,
+                            showTitleActions: true, onChanged: (date) {
+                          print('change $date in time zone ' +
+                              date.timeZoneOffset.inHours.toString());
                         }, onConfirm: (date) {
-                          _timeController.text = date.timeZoneOffset.toString().substring(11,16);
+                          _timeController.text =
+                              date.timeZoneOffset.toString().substring(11, 16);
                           print('confirm $date');
                         }, currentTime: DateTime.now());
                       },
@@ -130,49 +166,59 @@ void servicesShowDialog(BuildContext context) {
                         enabled: false,
                         maxLength: 300,
                         keyboardType: TextInputType.text,
-                        cursorColor: Font_Style.primaryColor,
-                        style:  Font_Style.productsans_medium(Font_Style.primaryColor, null),
-                        decoration: Font_Style.setLableUnderline("Select Time", null, context, Font_Style.primaryColor),
+                        cursorColor: FontStyle.primaryColor,
+                        style: FontStyle.productsansMedium(
+                            FontStyle.primaryColor, null),
+                        decoration: FontStyle.setLableUnderline("Select Time",
+                            null, context, FontStyle.primaryColor),
                       ),
                     ),
                     TextFormField(
-                      validator: (val){
-                        return val.length > 5 ?
-                        null : "Description is too short";
+                      validator: (val) {
+                        return val.length > 5
+                            ? null
+                            : "Description is too short";
                       },
                       controller: _descController,
                       maxLength: 300,
                       maxLines: 3,
                       minLines: 2,
                       keyboardType: TextInputType.text,
-                      cursorColor: Font_Style.primaryColor,
-                      style:  Font_Style.productsans_medium(Font_Style.primaryColor, null),
-                      decoration: Font_Style.setLableUnderline("Description", null, context, Font_Style.primaryColor),
+                      cursorColor: FontStyle.primaryColor,
+                      style: FontStyle.productsansMedium(
+                          FontStyle.primaryColor, null),
+                      decoration: FontStyle.setLableUnderline(
+                          "Description", null, context, FontStyle.primaryColor),
                     ),
-                    SizedBox(height: 25.0.h,),
+                    SizedBox(
+                      height: 25.0.h,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         RaisedButton(
-                          onPressed: () {Navigator.of(context).pop();},
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                           textColor: Colors.white,
                           color: Colors.grey,
                           child: Text(
                             "DELETE",
-                            style: Font_Style.productsans_Bold(Colors.white, 12),
+                            style: FontStyle.productsansBold(Colors.white, 12),
                           ),
                         ),
                         RaisedButton(
                           onPressed: () {
-                            if(serviceUpdateFormKey.currentState.validate()) {
+                            if (serviceUpdateFormKey.currentState.validate()) {
                               Navigator.of(context).pop();
                             }
                           },
                           textColor: Colors.white,
-                          color: Font_Style.secondaryColor,
+                          color: FontStyle.secondaryColor,
                           child: Text(
                             "SAVE",
-                            style: Font_Style.productsans_Bold(Font_Style.primaryColor, 12),
+                            style: FontStyle.productsansBold(
+                                FontStyle.primaryColor, 12),
                           ),
                         ),
                       ],
