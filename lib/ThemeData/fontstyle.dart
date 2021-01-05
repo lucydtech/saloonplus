@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FontStyle {
+  static final FontStyle _singleton = FontStyle._internal();
+  factory FontStyle() {
+    return _singleton;
+  }
+  FontStyle._internal();
+
   static Color primaryColor = Color.fromRGBO(1, 22, 30, 1);
   static Color secondaryColor = Color.fromRGBO(241, 216, 106,
       1); //(251,217,137,1);//(137, 207, 230, 1);//(199,232,243, 1);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
+import 'package:saloon_plus_barber/screens/appointments_package/appointments_home.dart';
 import 'package:saloon_plus_barber/screens/profile_package/barber_profile.dart';
 
 class BottomNav extends StatefulWidget {
@@ -22,12 +22,10 @@ class _BottomNavState extends State<BottomNav> {
     botNavIndex = widget.currentIndex ?? 1;
 
     _list = [
-      Container(
-        color: Colors.red,
-      ),
+      AppointmentsHome(),
       BarberProfile(),
       Container(
-        color: Colors.green,
+        color: Colors.red,
       ),
     ];
     super.initState();
@@ -58,25 +56,22 @@ class _BottomNavState extends State<BottomNav> {
               child: BottomNavigationBar(
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    label: "Search",
-                    // title: Center(child: Text("Search")),
+                    label: "Bookings",
                     icon: Padding(
                         padding: EdgeInsets.only(bottom: 1.0.h),
-                        child: Icon(Icons.search)),
+                        child: Icon(Icons.calendar_today)),
                   ),
                   BottomNavigationBarItem(
                     label: "Profile",
-                    // title: Center(child: Text("  Profile")),
                     icon: Padding(
                         padding: EdgeInsets.only(bottom: 1.0.h),
                         child: Icon(Icons.account_box)),
                   ),
                   BottomNavigationBarItem(
-                    label: "Bookings",
-                    // title: Center(child: Text("Bookings")),
+                    label: "Search",
                     icon: Padding(
                         padding: EdgeInsets.only(bottom: 1.0.h),
-                        child: Icon(Icons.collections_bookmark)),
+                        child: Icon(Icons.search)),
                   ),
                 ],
                 iconSize: 25.0.h,
