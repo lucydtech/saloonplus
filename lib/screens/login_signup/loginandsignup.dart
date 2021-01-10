@@ -28,7 +28,7 @@ class _LoginSignUpState extends State<LoginSignUp>
   TextEditingController loginEmailController = new TextEditingController();
   TextEditingController loginPasswordController = new TextEditingController();
 
-  final signUpFormKey = GlobalKey<FormState>();
+  final _signUpFormKey = GlobalKey<FormState>();
   TextEditingController signUpFirstNameController = new TextEditingController();
   TextEditingController signUpLastNameController = new TextEditingController();
   TextEditingController signUpPasswordController = new TextEditingController();
@@ -177,7 +177,7 @@ class _LoginSignUpState extends State<LoginSignUp>
         padding: EdgeInsets.only(
             top: 35.0.h, bottom: 10.0.h, left: 10.0.w, right: 10.0.w),
         child: Form(
-          key: signUpFormKey,
+          key: _signUpFormKey,
           child: Column(
             children: <Widget>[
               Row(
@@ -337,7 +337,7 @@ class _LoginSignUpState extends State<LoginSignUp>
               );
             }
           } else {
-            if (signUpFormKey.currentState.validate()) {
+            if (_signUpFormKey.currentState.validate()) {
               Navigator.push(
                 context,
                 MaterialPageRoute(

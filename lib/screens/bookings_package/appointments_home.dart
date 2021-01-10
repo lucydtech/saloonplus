@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class AppointmentsHome extends StatefulWidget {
   @override
@@ -21,33 +22,48 @@ class _AppointmentsHomeState extends State<AppointmentsHome> {
   }
 
   @override
+  void dispose() {
+    _calendarController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
     DateTime date = DateTime(now.year, now.month, now.day);
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Appointments",
-            style: FontStyle.productsansBold(FontStyle.secondaryColor, 18),
-          ),
-          elevation: 0.0,
-          automaticallyImplyLeading: false,
-          titleSpacing: 5,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.more_time,
-                color: FontStyle.secondaryColor,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.notifications,
-                color: FontStyle.secondaryColor,
-              ),
-            )
+        floatingActionButton: SpeedDial(
+          animatedIcon: AnimatedIcons.menu_close,
+          animatedIconTheme:
+              IconThemeData(size: 22, color: FontStyle.primaryColor),
+          backgroundColor: FontStyle.secondaryColor,
+          visible: true,
+          curve: Curves.bounceIn,
+          children: [
+            SpeedDialChild(
+                child: Icon(
+                  Icons.more_time,
+                  color: FontStyle.secondaryColor,
+                ),
+                backgroundColor: FontStyle.middleColor,
+                onTap: () {
+                  print("Add Appointment");
+                },
+                label: 'Add Appointment',
+                labelStyle: FontStyle.productsansMedium(Colors.white, 16),
+                labelBackgroundColor: FontStyle.middleColor),
+            SpeedDialChild(
+                child: Icon(
+                  Icons.notifications,
+                  color: FontStyle.secondaryColor,
+                ),
+                backgroundColor: FontStyle.middleColor,
+                onTap: () {
+                  print("Notifications");
+                },
+                label: 'Notifications',
+                labelStyle: FontStyle.productsansMedium(Colors.white, 16),
+                labelBackgroundColor: FontStyle.middleColor),
           ],
         ),
         body: Column(

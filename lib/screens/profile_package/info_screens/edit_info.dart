@@ -11,7 +11,7 @@ class EditInfo extends StatefulWidget {
 }
 
 class _EditInfoState extends State<EditInfo> {
-  final profileUpdateFormKey = GlobalKey<FormState>();
+  final _profileUpdateFormKey = GlobalKey<FormState>();
 
   LocationData _locationData;
   List<String> stateList = new List<String>();
@@ -124,7 +124,7 @@ class _EditInfoState extends State<EditInfo> {
         backgroundColor: FontStyle.middleColor,
         title: Text(
           "Edit Barber Info",
-          style: FontStyle.productsansMedium(Colors.white, 18),
+          style: FontStyle.productsansBold(Colors.white, 18),
         ),
         leading: InkWell(
           onTap: () {
@@ -142,7 +142,7 @@ class _EditInfoState extends State<EditInfo> {
                   padding: EdgeInsets.symmetric(horizontal: 12.0.w),
                   child: InkWell(
                     onTap: () {
-                      if (profileUpdateFormKey.currentState.validate() &&
+                      if (_profileUpdateFormKey.currentState.validate() &&
                           _state != null &&
                           _district != null &&
                           _contactController.text.length == 10) {
@@ -175,7 +175,7 @@ class _EditInfoState extends State<EditInfo> {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Form(
-            key: profileUpdateFormKey,
+            key: _profileUpdateFormKey,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
