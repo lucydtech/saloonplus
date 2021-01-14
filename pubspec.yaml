@@ -41,6 +41,7 @@ dependencies:
   geocoder: ^0.2.1
   syncfusion_flutter_calendar: ^18.4.33
   flutter_speed_dial: ^1.2.5
+  fluttertoast: ^7.1.6
 
 dev_dependencies:
   flutter_test:

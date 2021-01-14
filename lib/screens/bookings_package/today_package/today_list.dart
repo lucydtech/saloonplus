@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
 
 class TodayList extends StatefulWidget {
@@ -8,9 +9,71 @@ class TodayList extends StatefulWidget {
 }
 
 class _TodayListState extends State<TodayList> {
+  DateTime now = DateTime.now();
+  bool _isBarberOnline = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // floatingActionButton: SpeedDial(
+      //   animatedIcon: AnimatedIcons.menu_close,
+      //   animatedIconTheme:
+      //       IconThemeData(size: 22, color: FontStyle.primaryColor),
+      //   backgroundColor: FontStyle.secondaryColor,
+      //   visible: true,
+      //   curve: Curves.bounceIn,
+      //   children: [
+      //     SpeedDialChild(
+      //         child: Icon(
+      //           Icons.more_time,
+      //           color: FontStyle.secondaryColor,
+      //         ),
+      //         backgroundColor: FontStyle.middleColor,
+      //         onTap: () {
+      //           print("Add Customer");
+      //         },
+      //         label: 'Add Customer',
+      //         labelStyle: FontStyle.productsansMedium(Colors.white, 16),
+      //         labelBackgroundColor: FontStyle.middleColor),
+      //     SpeedDialChild(
+      //         child: Icon(
+      //           Icons.notifications,
+      //           color: FontStyle.secondaryColor,
+      //         ),
+      //         backgroundColor: FontStyle.middleColor,
+      //         onTap: () {
+      //           print("Notifications");
+      //         },
+      //         label: 'Notifications',
+      //         labelStyle: FontStyle.productsansMedium(Colors.white, 16),
+      //         labelBackgroundColor: FontStyle.middleColor),
+      //   ],
+      // ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text(
+          "14 Jan, 2021",
+          style: FontStyle.productsansMedium(Colors.white, 16),
+        ),
+        actions: [
+          toggleSwitch(
+              _isBarberOnline, () => _isBarberOnline = !_isBarberOnline),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          print("Add customers");
+        },
+        label: Text(
+          "Add Customers",
+          style: FontStyle.productsansMedium(FontStyle.primaryColor, 14),
+        ),
+        icon: Icon(
+          FontAwesomeIcons.plusCircle,
+          color: FontStyle.primaryColor,
+          size: 18.0.h,
+        ),
+        backgroundColor: FontStyle.secondaryColor,
+      ),
       body: SafeArea(
           child: ListView.builder(
         itemCount: 10,
@@ -91,6 +154,30 @@ class _TodayListState extends State<TodayList> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget toggleSwitch(bool value, Function fun) {
+    return Container(
+      padding: EdgeInsets.only(right: 8.0.w),
+      child: Row(
+        children: <Widget>[
+          Switch(
+            value: value,
+            activeColor: Colors.green,
+            onChanged: (value) {
+              setState(() {
+                fun();
+              });
+            },
+          ),
+          Text(
+            value ? "Online" : "Offline",
+            style: FontStyle.productsansBold(
+                value ? Colors.green : Colors.white54, 14),
+          ),
+        ],
       ),
     );
   }

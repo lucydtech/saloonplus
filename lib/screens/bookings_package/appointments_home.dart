@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class AppointmentsHome extends StatefulWidget {
   @override
@@ -29,149 +28,112 @@ class _AppointmentsHomeState extends State<AppointmentsHome> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    DateTime date = DateTime(now.year, now.month, now.day);
     return Scaffold(
-        floatingActionButton: SpeedDial(
-          animatedIcon: AnimatedIcons.menu_close,
-          animatedIconTheme:
-              IconThemeData(size: 22, color: FontStyle.primaryColor),
-          backgroundColor: FontStyle.secondaryColor,
-          visible: true,
-          curve: Curves.bounceIn,
-          children: [
-            SpeedDialChild(
-                child: Icon(
-                  Icons.more_time,
-                  color: FontStyle.secondaryColor,
-                ),
-                backgroundColor: FontStyle.middleColor,
-                onTap: () {
-                  print("Add Appointment");
-                },
-                label: 'Add Appointment',
-                labelStyle: FontStyle.productsansMedium(Colors.white, 16),
-                labelBackgroundColor: FontStyle.middleColor),
-            SpeedDialChild(
-                child: Icon(
-                  Icons.notifications,
-                  color: FontStyle.secondaryColor,
-                ),
-                backgroundColor: FontStyle.middleColor,
-                onTap: () {
-                  print("Notifications");
-                },
-                label: 'Notifications',
-                labelStyle: FontStyle.productsansMedium(Colors.white, 16),
-                labelBackgroundColor: FontStyle.middleColor),
-          ],
-        ),
         body: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 12, //65.0.h,
-              width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemCount: 30,
-                itemBuilder: (BuildContext cntxt, int index) {
-                  return InkWell(
-                      onTap: () {
-                        setState(() {
-                          _selectedTime = nowTime.add(Duration(days: index));
-                        });
-                        _calendarController.displayDate = _selectedTime;
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width / 9, //42.0.w,
-                        margin: EdgeInsets.only(right: 7.0.w, left: 7.0.w),
-                        child: Column(
-                          children: [
-                            Text(
-                              "${DateFormat('EEE').format(nowTime.add(Duration(days: index)))}",
-                              style:
-                                  FontStyle.productsansBold(Colors.white, 14),
-                            ),
-                            SizedBox(
-                              height: 5.0.h,
-                            ),
-                            CircleAvatar(
-                              radius: MediaQuery.of(context).size.width /
-                                  24, //14.0.h,
-                              backgroundColor: _selectedTime
-                                          .difference(nowTime
-                                              .add(Duration(days: index)))
-                                          .inSeconds ==
-                                      0
-                                  ? FontStyle.secondaryColor
-                                  : FontStyle.primaryColor,
-                              child: Text(
-                                "${nowTime.add(Duration(days: index)).day}",
-                                style: FontStyle.productsansBold(
-                                    _selectedTime
-                                                .difference(nowTime
-                                                    .add(Duration(days: index)))
-                                                .inSeconds ==
-                                            0
-                                        ? FontStyle.primaryColor
-                                        : Colors.white,
-                                    16),
-                              ),
-                            ),
-                          ],
+      children: [
+        Container(
+          height: MediaQuery.of(context).size.height / 12, //65.0.h,
+          width: MediaQuery.of(context).size.width,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: 30,
+            itemBuilder: (BuildContext cntxt, int index) {
+              return InkWell(
+                  onTap: () {
+                    setState(() {
+                      _selectedTime = nowTime.add(Duration(days: index));
+                    });
+                    _calendarController.displayDate = _selectedTime;
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 9, //42.0.w,
+                    margin: EdgeInsets.only(right: 7.0.w, left: 7.0.w),
+                    child: Column(
+                      children: [
+                        Text(
+                          "${DateFormat('EEE').format(nowTime.add(Duration(days: index)))}",
+                          style: FontStyle.productsansBold(Colors.white, 14),
                         ),
-                      ));
-                },
-              ),
+                        SizedBox(
+                          height: 5.0.h,
+                        ),
+                        CircleAvatar(
+                          radius:
+                              MediaQuery.of(context).size.width / 24, //14.0.h,
+                          backgroundColor: _selectedTime
+                                      .difference(
+                                          nowTime.add(Duration(days: index)))
+                                      .inSeconds ==
+                                  0
+                              ? FontStyle.secondaryColor
+                              : FontStyle.primaryColor,
+                          child: Text(
+                            "${nowTime.add(Duration(days: index)).day}",
+                            style: FontStyle.productsansBold(
+                                _selectedTime
+                                            .difference(nowTime
+                                                .add(Duration(days: index)))
+                                            .inSeconds ==
+                                        0
+                                    ? FontStyle.primaryColor
+                                    : Colors.white,
+                                16),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ));
+            },
+          ),
+        ),
+        Expanded(
+          child: SfCalendar(
+            view: CalendarView.day,
+            timeRegionBuilder: timeRegionBuilder,
+            viewHeaderStyle: ViewHeaderStyle(
+              dayTextStyle: FontStyle.productsansBold(Colors.white, 14),
+              dateTextStyle: FontStyle.productsansBold(Colors.white, 16),
             ),
-            Expanded(
-              child: SfCalendar(
-                view: CalendarView.day,
-                timeRegionBuilder: timeRegionBuilder,
-                viewHeaderStyle: ViewHeaderStyle(
-                  dayTextStyle: FontStyle.productsansBold(Colors.white, 14),
-                  dateTextStyle: FontStyle.productsansBold(Colors.white, 16),
-                ),
-                headerStyle: CalendarHeaderStyle(
-                  //backgroundColor: FontStyle.primaryColor,
-                  textStyle:
-                      FontStyle.productsansBold(FontStyle.secondaryColor, 19),
-                  textAlign: TextAlign.center,
-                ),
-                controller: _calendarController,
-                // onTap: (val) {
+            headerStyle: CalendarHeaderStyle(
+              //backgroundColor: FontStyle.primaryColor,
+              textStyle:
+                  FontStyle.productsansBold(FontStyle.secondaryColor, 19),
+              textAlign: TextAlign.center,
+            ),
+            controller: _calendarController,
+            // onTap: (val) {
 
-                // },
-                minDate: nowTime,
-                maxDate: nowTime.add(Duration(days: 29)),
-                initialSelectedDate: nowTime,
-                initialDisplayDate: nowTime,
-                // onViewChanged: (val) {
-                //   print(val.visibleDates);
-                // },
-                // onLongPress: (val) {
-                //   print(val.date);
-                // },
-                backgroundColor: FontStyle.middleColor,
-                todayTextStyle: FontStyle.productsansBold(null, 19),
-                todayHighlightColor: FontStyle.secondaryColor,
-                specialRegions: _getBreakRegions(),
-                timeSlotViewSettings: TimeSlotViewSettings(
-                  startHour: 9,
-                  endHour: 18,
-                  timeInterval: Duration(hours: 1),
-                  timeIntervalHeight: 80.0.h,
-                  timeTextStyle:
-                      FontStyle.productsansBold(FontStyle.secondaryColor, 12),
-                  dateFormat: 'd',
-                  dayFormat: 'EEE',
-                ),
-                dataSource: MeetingDataSource(_getDataSource()),
-              ),
+            // },
+            minDate: nowTime,
+            maxDate: nowTime.add(Duration(days: 29)),
+            initialSelectedDate: nowTime,
+            initialDisplayDate: nowTime,
+            // onViewChanged: (val) {
+            //   print(val.visibleDates);
+            // },
+            // onLongPress: (val) {
+            //   print(val.date);
+            // },
+            backgroundColor: FontStyle.middleColor,
+            todayTextStyle: FontStyle.productsansBold(null, 19),
+            todayHighlightColor: FontStyle.secondaryColor,
+            specialRegions: _getBreakRegions(),
+            timeSlotViewSettings: TimeSlotViewSettings(
+              startHour: 9,
+              endHour: 18,
+              timeInterval: Duration(hours: 1),
+              timeIntervalHeight: 80.0.h,
+              timeTextStyle:
+                  FontStyle.productsansBold(FontStyle.secondaryColor, 12),
+              dateFormat: 'd',
+              dayFormat: 'EEE',
             ),
-          ],
-        ));
+            dataSource: MeetingDataSource(_getDataSource()),
+          ),
+        ),
+      ],
+    ));
   }
 
   List<Meeting> _getDataSource() {

@@ -115,7 +115,7 @@ class _EditInfoState extends State<EditInfo> {
       case "t":
         break;
       default:
-        addressFocusNode.requestFocus();
+        // addressFocusNode.requestFocus();
         break;
     }
 
