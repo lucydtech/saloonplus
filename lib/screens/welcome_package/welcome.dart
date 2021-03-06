@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
 import 'package:saloon_plus_barber/screens/components/bottom_nav.dart';
+import 'package:saloon_plus_barber/user_details/user_details.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -14,7 +15,14 @@ class _WelcomeState extends State<Welcome> {
   @override
   void initState() {
     Timer(Duration(milliseconds: 200), () {
-      //Navigator.pushNamed(context, "login_signUp");
+      navigateToScreen();
+    });
+    super.initState();
+  }
+
+  void navigateToScreen() {
+    if ((UserDetails.getUserId() != null)) {
+      print(UserDetails.firebaseUser);
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -22,8 +30,9 @@ class _WelcomeState extends State<Welcome> {
                   currentIndex: 1,
                 )),
       );
-    });
-    super.initState();
+    } else {
+      Navigator.pushNamed(context, "login_signUp");
+    }
   }
 
   @override

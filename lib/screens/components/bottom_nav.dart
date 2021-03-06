@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
-import 'package:saloon_plus_barber/screens/bookings_package/appointments_home.dart';
 import 'package:saloon_plus_barber/screens/bookings_package/bookings_home.dart';
 import 'package:saloon_plus_barber/screens/profile_package/barber_profile.dart';
 

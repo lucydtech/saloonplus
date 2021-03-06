@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
+import 'package:progress_state_button/progress_button.dart';
 import 'package:saloon_plus_barber/ThemeData/fontstyle.dart';
-import 'package:saloon_plus_barber/screens/components/bottom_nav.dart';
+import 'package:saloon_plus_barber/repository/authentication_repository.dart';
 
 class LoginSignUp extends StatefulWidget {
   @override
@@ -17,12 +18,19 @@ bool _isSignUpObscureCnfPwdPressed = true;
 
 class _LoginSignUpState extends State<LoginSignUp>
     with SingleTickerProviderStateMixin {
+  AuthenticationRepository authenticationRepository =
+      new AuthenticationRepository();
+
   TabController _tabController;
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
+
+  ButtonState stateOnlyText = ButtonState.idle;
+  ButtonState stateTextWithIcon = ButtonState.idle;
+  String response;
 
   final loginFormKey = GlobalKey<FormState>();
   TextEditingController loginEmailController = new TextEditingController();
@@ -34,6 +42,17 @@ class _LoginSignUpState extends State<LoginSignUp>
   TextEditingController signUpPasswordController = new TextEditingController();
   TextEditingController signUpCnfPasswordController =
       new TextEditingController();
+
+  void buttonCallback(buttonState, response) {
+    setState(() {
+      if (response != null) {
+        response = response;
+      }
+      if (buttonState != null) {
+        stateOnlyText = buttonState;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +148,7 @@ class _LoginSignUpState extends State<LoginSignUp>
               keyboardType: TextInputType.text,
               decoration: FontStyle.setLable(
                   "Password",
-                  GestureDetector(
+                  InkWell(
                       onTap: () {
                         setState(() {
                           _isLoginObscurePressed = !_isLoginObscurePressed;
@@ -327,24 +346,37 @@ class _LoginSignUpState extends State<LoginSignUp>
       child: InkWell(
         onTap: () {
           if (btnTitle == "LOG IN") {
+            FocusScope.of(context).requestFocus(FocusNode());
             if (loginFormKey.currentState.validate()) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BottomNav(
-                          currentIndex: 1,
-                        )),
-              );
+              setState(() {
+                stateOnlyText = ButtonState.loading;
+              });
+              authenticationRepository
+                  .signInUsingEmail(loginEmailController.text,
+                      loginPasswordController.text, context, buttonCallback)
+                  .catchError((e) {
+                print("Error in Sign IN using email");
+                print(e.toString);
+              });
             }
           } else {
+            FocusScope.of(context).requestFocus(FocusNode());
             if (_signUpFormKey.currentState.validate()) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BottomNav(
-                          currentIndex: 1,
-                        )),
-              );
+              setState(() {
+                stateOnlyText = ButtonState.loading;
+              });
+              authenticationRepository
+                  .signUpUsingEmail(
+                      loginEmailController.text,
+                      signUpPasswordController.text,
+                      signUpFirstNameController.text,
+                      signUpLastNameController.text,
+                      context,
+                      buttonCallback)
+                  .catchError((e) {
+                print("Error in Sign UP using email");
+                print(e.toString);
+              });
             }
           }
         },

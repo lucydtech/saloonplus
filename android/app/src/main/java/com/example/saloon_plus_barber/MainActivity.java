@@ -1,4 +1,4 @@
-package com.example.saloon_plus_barber;
+package com.lucydtech.saloon_plus_barber;
 
 import io.flutter.embedding.android.FlutterActivity;
 

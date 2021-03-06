@@ -42,6 +42,14 @@ dependencies:
   syncfusion_flutter_calendar: ^18.4.33
   flutter_speed_dial: ^1.2.5
   fluttertoast: ^7.1.6
+  cloud_firestore: ^0.16.0+1
+  firebase_storage: ^7.0.0
+  firebase_auth: ^0.20.1
+  firebase_core: ^0.7.0
+  flutter_bloc: ^6.1.2
+  flutter_spinkit: ^4.1.2+1
+  flutter_beautiful_popup: ^1.5.0
+  progress_state_button: ^1.0.2
 
 dev_dependencies:
   flutter_test:

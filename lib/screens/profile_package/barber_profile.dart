@@ -15,7 +15,7 @@ class _BarberProfileState extends State<BarberProfile>
     with SingleTickerProviderStateMixin {
   TabController _barberProfileTabController;
 
-  double _height, _width;
+  double _height;
 
   @override
   void initState() {
@@ -28,7 +28,6 @@ class _BarberProfileState extends State<BarberProfile>
   @override
   Widget build(BuildContext context) {
     _height = MediaQuery.of(context).size.height;
-    _width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SafeArea(
